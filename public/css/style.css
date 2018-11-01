@@ -1,0 +1,228 @@
+@font-face {
+    font-family: 'carbontyperegular';
+    src: url('../fonts/carbontype-webfont.eot');
+    src: url('../fonts/carbontype-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/carbontype-webfont.woff2') format('woff2'),
+         url('../fonts/carbontype-webfont.woff') format('woff'),
+         url('../fonts/carbontype-webfont.ttf') format('truetype'),
+         url('../fonts/carbontype-webfont.svg#carbontyperegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+/*STYLE CSS PROJET 4*/
+
+/*=== CORPS ==================================================================================================================*/
+
+html, body
+{
+	font-family: 'Roboto', sans-serif;
+	font-size: 1em;
+	margin: 0 auto;
+    padding: 0;
+    max-width: 1600px;
+
+    background: url("../images/background.png") fixed no-repeat top right;
+    color: white;
+}
+
+h1
+{
+
+}
+
+h2
+{
+
+}
+
+a
+{
+	color: black;
+	text-decoration: none;
+}
+
+/*=== HEADER =================================================================================================================*/
+
+header
+{
+	height: 50px;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	display: flex;
+	flex-direction: row;
+
+	background-color: white;
+	color: black;
+	box-shadow: 0px 0px 4px black;
+	z-index: 99;
+}
+
+header h1
+{
+	position: relative;
+	margin-top: 15px;
+	left: 10px;
+
+	font-family: 'carbontyperegular', 'Roboto', sans-serif;
+	font-size: 1.3em;
+}
+
+nav
+{
+	position: absolute;
+	margin-top: -5px;
+	right: 10px;
+	font-family: 'carbontyperegular', 'Roboto', sans-serif;
+	font-size: 1.3em;
+}
+
+nav ul
+{
+	display: flex;
+	flex-direction: row;
+	list-style-type: none;
+}
+
+nav li
+{
+    margin-right: 35px;
+}
+
+
+@media all and (max-width: 1366px)/*=========================*/
+{
+
+}
+
+@media all and (max-width: 1024px)/*=========================*/
+{
+
+}
+
+@media all and (max-width: 720px)/*=========================*/
+{
+	
+}
+
+@media all and (max-width: 480px)/*=========================*/
+{
+
+}
+
+/*=== LIST POSTS ==============================================================================================================*/
+
+
+#list-posts
+{
+	position: relative;
+	margin-top: 50px;
+	width: 90%;
+	left: 5%;
+	padding-bottom: 25px;
+
+	background-color: #F0F0F0;
+}
+
+#list-posts-banner
+{
+	position: relative;
+	height: 300px;
+	width: 100%;
+	text-align: center;
+
+	background: url("../images/list-posts-banner.png");
+	box-shadow: 0px 0px 4px black;
+}
+
+#list-posts-banner h1
+{
+	position: relative;
+	margin: auto;
+	bottom: -180px;
+
+	font-family: 'carbontyperegular', 'Roboto', sans-serif;
+	font-size: 2.5em;
+	color: black;
+}
+
+.news
+{	
+	position: relative;
+	width: 90%;
+	left: 5%;
+	top: 20px;
+	padding: 5px 10px;
+	margin-bottom: 15px;
+
+	background-color: white;
+	color: black;
+	border-radius: 10px;
+}
+
+.news h3, p
+{	
+	position: relative;
+}
+
+.news a
+{	
+	position: relative;
+	font-weight: bold;
+	bottom: -7px;
+}
+
+
+
+@media all and (max-width: 1366px)/*=========================*/
+{
+
+}
+
+@media all and (max-width: 1024px)/*=========================*/
+{
+
+}
+
+@media all and (max-width: 720px)/*=========================*/
+{
+	
+}
+
+@media all and (max-width: 480px)/*=========================*/
+{
+
+}
+
+/*=== FOOTER ==================================================================================================================*/
+
+footer
+{
+	position: relative;
+	height: 50px;
+
+	background-color: white;
+	color: black;
+}
+
+@media all and (max-width: 1366px)/*=========================*/
+{
+
+}
+
+@media all and (max-width: 1024px)/*=========================*/
+{
+
+}
+
+@media all and (max-width: 720px)/*=========================*/
+{
+	
+}
+
+@media all and (max-width: 480px)/*=========================*/
+{
+
+}
