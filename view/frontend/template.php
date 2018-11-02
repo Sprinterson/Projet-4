@@ -10,8 +10,8 @@
     	<h1>Blog de Jean Forteroche</h1>
 		<nav>
         	<ul>
-                <li><a href="">Accueil</a></li>
-                <li><a href="">Articles</a></li>
+                <li><a href="index.php">Accueil</a></li>
+                <li><a href="?action=listPosts">Articles</a></li>
             </ul>
         </nav>
     </header>

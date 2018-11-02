@@ -4,11 +4,11 @@ require('controller/frontendController.php');
 try {
     if (isset($_GET['action'])) {
         if ($_GET['action'] == 'listPosts') {
-            listPosts();
+            listPosts(); // renvoie sur la page de la liste d'articles si le paramètre d'action est listPosts
         }
         elseif ($_GET['action'] == 'post') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
-                post();
+                post(); // renvoie sur la page d'ajout de commentaires si le paramètre d'action est listPosts
             }
             else {
                 throw new Exception('Aucun identifiant de billet envoyé');
@@ -29,7 +29,7 @@ try {
         }
     }
     else {
-        listPosts();
+        homeView(); // nom de la page d'accueil sur laquelle on est directement redirigé sur l'URL ne contient aucun paramètre.
     }
 }
 catch(Exception $e) {

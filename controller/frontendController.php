@@ -4,6 +4,11 @@
 require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
 
+function homeView()
+{
+    require('view/frontend/homeView.php');
+}
+
 function listPosts()
 {
     $postManager = new \OpenClassrooms\Projet4\Model\PostManager(); // Création d'un objet
