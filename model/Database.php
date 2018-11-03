@@ -2,7 +2,7 @@
 
 namespace OpenClassrooms\Projet4\Model; // La classe sera dans ce namespace
 
-class Manager
+class Database
 {
     protected function dbConnect()
     {

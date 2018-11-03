@@ -4,7 +4,7 @@ namespace OpenClassrooms\Projet4\Model; // La classe sera dans ce namespace
 
 require_once("model/Database.php"); // Vous n'alliez pas oublier cette ligne ? ;o)
 
-class PostManager extends Manager
+class PostsManager extends Database
 {
     public function getPosts()
     {

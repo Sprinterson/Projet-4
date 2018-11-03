@@ -4,7 +4,7 @@ namespace OpenClassrooms\Projet4\Model; // La classe sera dans ce namespace
 
 require_once("model/Database.php");
 
-class CommentManager extends Manager
+class CommentsManager extends Database
 {
     public function getComments($postId)
     {

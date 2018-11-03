@@ -87,6 +87,7 @@ header
 	height: 50px;
 	width: 100%;
 	position: fixed;
+	left: 0;
 	top: 0;
 	display: flex;
 	flex-direction: row;
@@ -275,9 +276,9 @@ nav a
 {	
 	position: relative;
 	width: 90%;
-	left: 5%;
 	top: 20px;
 	padding: 5px 10px;
+	margin: auto;
 	margin-bottom: 15px;
 
 	background-color: white;
@@ -344,22 +345,51 @@ nav a
 	font-size: 1em;
 }
 
-#comments
+.comments
 {
 	position: relative;
-	left: 5%;
+	margin-left: 100px;
 	color: black;
+}
+
+.comments-list
+{
+	position: relative;
+	width: 80%;
+	margin: auto;
+	margin-bottom: 15px;
+	margin-left: 100px;
+	padding: 5px 10px;
+
+	background-color: white;
+	color: black;
+	border-radius: 10px;
 }
 
 #posts form
 {
 	position: relative;
 	width: 50%;
-	left: 5%;
-	margin-bottom: 100px;
+	margin: auto;
+	margin-left: 100px;;
+	margin-bottom: 10px;
+	padding: 5px 10px;
 
 	font-family: 'open_sansregular', sans-serif;
+	background-color: white;
 	color: black;
+	border-radius: 10px;
+}
+
+#posts form div
+{
+	margin-bottom: 10px;
+}
+
+#posts textarea
+{
+	height: 150px;
+	width: 375px;
 }
 
 @media all and (max-width: 1366px)/*=========================*/
@@ -388,10 +418,11 @@ footer
 {
 	position: relative;
 	height: 50px;
+	width: 100%;
+	left: 0;
 
 	background-color: white;
 	color: black;
-    margin-top: -3em;
 }
 
 @media all and (max-width: 1366px)/*=========================*/
@@ -413,3 +444,5 @@ footer
 {
 
 }
+
+/*=== END ==================================================================================================================*/

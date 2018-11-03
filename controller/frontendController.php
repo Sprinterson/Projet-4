@@ -1,8 +1,8 @@
 <?php
 
 // Chargement des classes
-require_once('model/PostManager.php');
-require_once('model/CommentManager.php');
+require_once('model/PostsManager.php');
+require_once('model/CommentsManager.php');
 
 function homeView()
 {
@@ -11,28 +11,28 @@ function homeView()
 
 function listPosts()
 {
-    $postManager = new \OpenClassrooms\Projet4\Model\PostManager(); // Création d'un objet
-    $posts = $postManager->getPosts(); // Appel d'une fonction de cet objet
+    $postsManager = new \OpenClassrooms\Projet4\Model\PostsManager(); // Création d'un objet
+    $posts = $postsManager->getPosts(); // Appel d'une fonction de cet objet
 
     require('view/frontend/listPostsView.php');
 }
 
 function post()
 {
-    $postManager = new \OpenClassrooms\Projet4\Model\PostManager();
-    $commentManager = new \OpenClassrooms\Projet4\Model\CommentManager();
+    $postsManager = new \OpenClassrooms\Projet4\Model\PostsManager();
+    $commentsManager = new \OpenClassrooms\Projet4\Model\CommentsManager();
 
-    $post = $postManager->getPost($_GET['id']);
-    $comments = $commentManager->getComments($_GET['id']);
+    $post = $postsManager->getPost($_GET['id']);
+    $comments = $commentsManager->getComments($_GET['id']);
 
     require('view/frontend/postView.php');
 }
 
 function addComment($postId, $author, $comment)
 {
-    $commentManager = new \OpenClassrooms\Projet4\Model\CommentManager();
+    $commentsManager = new \OpenClassrooms\Projet4\Model\CommentsManager();
 
-    $affectedLines = $commentManager->postComment($postId, $author, $comment);
+    $affectedLines = $commentsManager->postComment($postId, $author, $comment);
 
     if ($affectedLines === false) {
         throw new Exception('Impossible d\'ajouter le commentaire !');
