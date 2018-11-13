@@ -18,7 +18,7 @@
     <h2 class="comments">Commentaires</h2>
 
 <?php
-while ($comment = $comments->fetch())
+foreach ($comments as $comment)
 {
 ?>
     <div class="comments-list">

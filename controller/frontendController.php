@@ -6,13 +6,15 @@ require_once('model/CommentsManager.php');
 
 function homeView()
 {
+    $postsManager = new \OpenClassrooms\Projet4\Model\PostsManager(); // Création d'un objet
+    $posts = $postsManager->lastPost(); // Appel d'une fonction de cet objet
     require('view/frontend/homeView.php');
 }
 
 function listPosts()
 {
-    $postsManager = new \OpenClassrooms\Projet4\Model\PostsManager(); // Création d'un objet
-    $posts = $postsManager->getPosts(); // Appel d'une fonction de cet objet
+    $postsManager = new \OpenClassrooms\Projet4\Model\PostsManager(); 
+    $posts = $postsManager->getPosts(); 
 
     require('view/frontend/listPostsView.php');
 }

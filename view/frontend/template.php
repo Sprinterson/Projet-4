@@ -7,11 +7,11 @@
     </head>
 
     <header>
-    	<h1>Blog de Jean Forteroche</h1>
+    	<h1><a href="index.php">Blog de Jean Forteroche</a></h1>
 		<nav>
         	<ul>
-                <li><a href="index.php">Accueil</a></li>
-                <li><a href="?action=listPosts">Articles</a></li>
+                <li><a href="index.php" class="fade">Accueil</a></li>
+                <li><a href="?action=listPosts" class="fade">Articles</a></li>
             </ul>
         </nav>
     </header>

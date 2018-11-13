@@ -80,6 +80,12 @@ a
 	text-decoration: none;
 }
 
+em
+{
+	font-size: 0.6em;
+	font-style: normal;
+}
+
 /*=== HEADER =================================================================================================================*/
 
 header
@@ -129,10 +135,25 @@ nav li
     margin-right: 35px;
 }
 
-nav a
+header a
 {
 	font-family: 'caviar_dreamsregular', sans-serif;
 }
+
+nav a:hover
+{
+	padding: 5px;
+	background-color: #173035;
+	color: white;
+}
+
+nav li:hover
+{
+    margin-right: 25px;
+}
+
+
+
 
 
 @media all and (max-width: 1366px)/*=========================*/
@@ -202,17 +223,30 @@ nav a
 
 }
 
-/*=== LAST ARTICLE ============================================================================================================*/
+/*=== LAST-ARTICLE ============================================================================================================*/
 
 #last-article
 {
 	position: relative;
-	height: 500px;
 	width: 90%;
 	left: 5%;
+	padding-bottom: 100px;
 
 	background-color: #F0F0F0;
 	color: black;
+}
+
+#last-article-title
+{
+	position: relative;
+	top: 10px;
+	left: 20px;
+	margin: 0px;
+}
+
+#last-article a
+{
+	font-family: 'caviar_dreamsregular';
 }
 
 @media all and (max-width: 1366px)/*=========================*/
@@ -235,7 +269,7 @@ nav a
 
 }
 
-/*=== LIST POSTS ==============================================================================================================*/
+/*=== LIST-POSTS ==============================================================================================================*/
 
 
 #list-posts
@@ -272,6 +306,11 @@ nav a
 	text-shadow: 1px 1px 2px white; 
 }
 
+#list-posts a
+{
+	font-family: 'caviar_dreamsregular';
+}
+
 .news
 {	
 	position: relative;
@@ -291,10 +330,9 @@ nav a
 	position: relative;
 }
 
-.news a
+.comments-link
 {	
 	position: relative;
-	font-weight: bold;
 	bottom: -7px;
 }
 
