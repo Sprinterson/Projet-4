@@ -1,34 +1,32 @@
 <?php
+
+namespace OpenClassrooms\Projet4\Model; // La classe sera dans ce namespace
+
 class Comment
 {
+
+ // Propriétés
+
     private $_id;
     private $_post_id;
     private $_author;
     private $_comment;
-    private $_comment_date;
+    private $_comment_date_fr;
 
-    public function hydrate(array $donnees){
 
-        foreach ($donnees as $key => $value){
-            $method = 'set'.ucfirst($key);
-            
-            if (method_exists($this, $method)){
-                $this->$method($value);
-            }
-        }
-    }
+ // Hydratation
 
-    /*public function __construct($db){
-        function hydrate(array $donnees){
-            foreach ($donnees as $key => $value){
+    public function __construct(array $data){
+            foreach ($data as $key => $value){
                 $method = 'set'.ucfirst($key);
                 
                 if (method_exists($this, $method)){
                     $this->$method($value);
                 }
             }
-        }
-    }*/
+    }
+
+ // Getters
 
     public function id(){ 
         return $this->_id; 
@@ -46,9 +44,12 @@ class Comment
         return $this->_comment; 
     }
 
-    public function comment_date(){ 
-        return $this->_comment_date; 
+    public function comment_date_fr(){ 
+        return $this->_comment_date_fr;
+        var_dump($comment_date_fr);
     }
+
+ // Setters
 
     public function setId($id){
         $this->_id = (int) $id;
@@ -70,9 +71,15 @@ class Comment
         }
     }
 
-    public function setComment($comment_date){
-        if (){
-            $this->_comment_date = $comment_date;
-        }  
+    public function setCommentDateFr($comment_date_fr){
+        if (is_string($comment_date_fr)){
+            $this->_comment_date_fr = $comment_date_fr;
+        }
+        var_dump($comment_date_fr);
     }
+
 }
+
+
+
+

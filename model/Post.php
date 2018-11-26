@@ -1,35 +1,27 @@
 <?php
+
+namespace OpenClassrooms\Projet4\Model; // La classe sera dans ce namespace
+
 class Post
 {
     private $_id;
     private $_title;
     private $_content;
-    private $_creation_date;
+    private $_creation_date_fr;
 
-    public function hydrate(array $donnees){
+ // Hydratation
 
-        foreach ($donnees as $key => $value){
-            $method = 'set'.ucfirst($key);
-
-            if (method_exists($this, $method)){
-            $this->$method($value);
-            }
-        }
-    }
-
-    /*public function __construct($db){
-        function hydrate(array $donnees){
-
-            foreach ($donnees as $key => $value){
+    public function __construct(array $data){
+            foreach ($data as $key => $value){
                 $method = 'set'.ucfirst($key);
-
+                
                 if (method_exists($this, $method)){
-                $this->$method($value);
+                    $this->$method($value);
                 }
             }
-        }
-    }*/
+    }
 
+ // Getters
 
     public function id(){ 
         return $this->_id; 
@@ -43,27 +35,31 @@ class Post
         return $this->_content; 
     }
 
-    public function creation_date(){ 
-        return $this->_creation_date; 
+    public function creation_date_fr(){ 
+        return $this->_creation_date_fr; 
     }
+
+ // Setters
 
     public function setId($id){
         $this->_id = (int) $id;
     }
         
     public function setTitle($title){
-        if (is_string($author)){
-            $this->_author = $author;
+        if (is_string($title)){
+            $this->_title = $title;
         }
     }
 
     public function setContent($content){
-        if (is_string($author)){
-            $this->_author = $author;
+        if (is_string($content)){
+            $this->_content = $content;
         }
     }
 
-    public function setCreationDate($creation_date){
-
+    public function setCreationDateFr($creation_date_fr){
+        if (checkdate($creation_date)){
+            $this->_creation_date = $creation_date;
+        }  
     }
 }

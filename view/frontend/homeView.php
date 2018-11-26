@@ -15,20 +15,20 @@
         ?>
             <div class="news">
                 <h2>
-                    <a href="index.php?action=post&amp;id=<?= $data['id'] ?>"><?= htmlspecialchars($data['title']) ?></a>
-                    <em>le <?= $data['creation_date_fr'] ?></em>
+                    <a href="index.php?action=post&amp;id=<?= $data->id() ?>"><?= htmlspecialchars($data->title()) ?></a>
+                    <em>le <?= $data->creation_date_fr() ?></em>
                 </h2>
                 
                 <p>
-                    <?= nl2br(htmlspecialchars($data['content']))?>
+                    <?= nl2br(htmlspecialchars($data->content()))?>
                     <br/>
-                    <a href="index.php?action=post&amp;id=<?= $data['id'] ?>" class="comments-link">Commentaires</a>
+                    <a href="index.php?action=post&amp;id=<?= $data->id() ?>" class="comments-link">Commentaires</a>
                 </p>
             </div>
         <?php
         }
 
-    $posts->closeCursor();
+    //$posts->closeCursor();
     ?>
 </section>
 

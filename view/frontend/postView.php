@@ -1,37 +1,45 @@
-<?php $title = htmlspecialchars($post['title']); ?>
+<?php $title = 'Le blog de Jean Forteroche'; ?>
 
 <?php ob_start(); ?>
+
 <section id="posts">
+    <?php
+        foreach ($posts as $data)
+        {
+    ?>
     <h1><a href="?action=listPosts">Retour à la liste des billets</a></h1>
 
     <div class="news">
         <h2>
-            <?= htmlspecialchars($post['title']) ?>
-            <em>le <?= $post['creation_date_fr'] ?></em>
+            <?= htmlspecialchars($data->title()) ?>
+            <em>le <?= $data->creation_date_fr() ?></em>
         </h2>
         
         <p>
-            <?= nl2br(htmlspecialchars($post['content'])) ?>
+            <?= nl2br(htmlspecialchars($data->content())) ?>
         </p>
     </div>
+        <?php
+        }
+        ?>
 
     <h2 class="comments">Commentaires</h2>
 
-<?php
-foreach ($comments as $comment)
-{
-?>
-    <div class="comments-list">
-        <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?></p>
-        <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
-    </div>
-<?php
-}
-?>
+    <?php
+        foreach ($comments as $comments)
+        {
+    ?>
+            <div class="comments-list">
+                <p><strong><?= htmlspecialchars($comments->author()) ?></strong> le <?= $comments->comment_date_fr() ?></p>
+                <p><?= nl2br(htmlspecialchars($comments->comment())) ?></p>
+            </div>
+        <?php
+        }
+        ?>
 
     <h2 class="comments">Ajouter un commentaire</h2>
 
-    <form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
+    <form action="index.php?action=addComment&amp;id=<?= $data->id() ?>" method="post">
         <div>
             <label for="author">Auteur</label><br />
             <input type="text" id="author" name="author" />

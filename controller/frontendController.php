@@ -8,6 +8,8 @@ function homeView()
 {
     $postsManager = new \OpenClassrooms\Projet4\Model\PostsManager(); // Création d'un objet
     $posts = $postsManager->lastPost(); // Appel d'une fonction de cet objet
+    //var_dump($posts);
+
     require('view/frontend/homeView.php');
 }
 
@@ -15,6 +17,7 @@ function listPosts()
 {
     $postsManager = new \OpenClassrooms\Projet4\Model\PostsManager(); 
     $posts = $postsManager->getPosts(); 
+    //var_dump($posts);
 
     require('view/frontend/listPostsView.php');
 }
@@ -24,8 +27,9 @@ function post()
     $postsManager = new \OpenClassrooms\Projet4\Model\PostsManager();
     $commentsManager = new \OpenClassrooms\Projet4\Model\CommentsManager();
 
-    $post = $postsManager->getPost($_GET['id']);
+    $posts = $postsManager->getPost($_GET['id']);
     $comments = $commentsManager->getComments($_GET['id']);
+    //var_dump($posts);
 
     require('view/frontend/postView.php');
 }
