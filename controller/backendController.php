@@ -25,10 +25,22 @@ function adminAccess()
     require('view/backend/adminAccess.php');
 }
 
-// Chargement de la page d'administration
+// Chargement de la page vérifiant les identifiants de connexion
+function adminLogin()
+{
+    $usersManager = new \OpenClassrooms\Projet4\Model\UsersManager();
+    $login = $usersManager->getLogin();
+    require('view/backend/adminLogin.php');
+}
+
 function adminView()
 {
     require('view/backend/adminView.php');
+}
+
+function adminLogout()
+{
+    require('view/backend/adminLogout.php');
 }
 
 // Chargement de la page d'ajout de billet
@@ -41,10 +53,9 @@ function newPostView()
 function addPost($title, $content)
 {
     $postsManager = new \OpenClassrooms\Projet4\Model\PostsManager();
-
     $affectedLines = $postsManager->addPost($title, $content);
 
-    if ($affectedLines === false) {
+    if ($affectedLines === false){
         throw new Exception('Impossible d\'ajouter le billet !');
     }
     else {
@@ -65,7 +76,6 @@ function deletePostView()
 function deletePost($title, $content)
 {
     $postsManager = new \OpenClassrooms\Projet4\Model\PostsManager();
-
     $affectedLines = $postsManager->deletePost($title, $content);
 
     if ($affectedLines === false) {
@@ -79,10 +89,10 @@ function deletePost($title, $content)
 // Chargement de la page de gestion des commentaires
 function commentsView()
 {
-	$commentsManager = new \OpenClassrooms\Projet4\Model\PostsManager(); 
-    $comments = $commentsManager->getPosts(); 
+	$commentsManager = new \OpenClassrooms\Projet4\Model\CommentsManager(); 
+    $comments = $commentsManager->getAllComments(); 
 
-    require('view/backend/deletePostView.php');
+    require('view/backend/commentsView.php');
 }
 
 

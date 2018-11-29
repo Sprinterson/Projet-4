@@ -8,7 +8,7 @@ $title = 'Accès à l\'administration'; ?>
 <section id="admin-access">
 
 	<h1>Panneau d'admnistration</h1>
-	<form action="index.php?action=admin" method="post">
+	<form action="index.php?action=adminLogin" method="post">
         <div>
             <label for="pseudo">Pseudo</label><br />
             <input type="text" id="pseudo" name="pseudo" />
@@ -18,7 +18,7 @@ $title = 'Accès à l\'administration'; ?>
             <input type="password" id="password" name="password" />
         </div>
         <div>
-            <input type="submit" />
+            <input type="submit" value="login" />
         </div>
     </form>
 

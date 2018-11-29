@@ -16,6 +16,7 @@ class PostsManager
 
         // La requête retournée est transformée en tableau 
         $req->execute(array());
+        var_dump($req);
 
         while ($data = $req->fetch($db::FETCH_ASSOC)){
            $posts[]  = new \OpenClassrooms\Projet4\Model\Post($data); // On instancie le tableau en nouvel objet 
@@ -23,7 +24,6 @@ class PostsManager
 
         // l'objet est retourné en résultat
         return $posts;
-
     }
 
 

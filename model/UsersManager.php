@@ -1,43 +1,28 @@
 <?php
+
+namespace OpenClassrooms\Projet4\Model; // La classe sera dans ce namespace
+
+require_once 'Database.php';
+require_once 'User.php';
+
 class UsersManager
 {
-    public function __construct($db){
-        $this->setDb($db);
-    }
+    public function getLogin(){ // Fonction pour récupérer les identifiants
+        // On se connecte à la base de données
+        $db = \OpenClassrooms\Projet4\Model\Database::dbConnect(); 
 
-    public function add(User $user){
-        $q = $this->_db->prepare('INSERT INTO users(pseudo) VALUES(:pseudo)');
+        // On établit une requête dans la base de données pour récupérer les identifiants
+        $req = $db->query('SELECT id, pseudo, password FROM users');
 
-        $q->bindValue(':pseudo', $pseudo->nom());
-        $q->execute();
-    }
+        // La requête retournée est transformée en tableau 
+        $req->execute(array());
 
-    public function delete(User $user){
-        $this->_db->exec('DELETE FROM users WHERE id = '.$user->id());
-    }
+        $data = $req->fetch($db::FETCH_ASSOC);
+        
+        // On instancie le tableau en nouvel objet 
+        $login = new \OpenClassrooms\Projet4\Model\User($data); 
 
-    public function get($id){
-        $id = (int) $id;
-
-        $q = $this->_db->query('SELECT id, pseudo FROM users WHERE id = '.$id);
-        $donnees = $q->fetch(PDO::FETCH_ASSOC);
-
-        return new User($donnees);
-    }
-
-    public function getList(){
-        $pseudos = [];
-
-        $q = $this->_db->query('SELECT id, pseudo FROM users ORDER BY pseudo');
-
-        while ($donnees = $q->fetch(PDO::FETCH_ASSOC)){
-        $pseudos[] = new User($donnees);
-        }
-
-        return $pseudos;
-    }
-
-    public function setDb(PDO $db){
-        $this->_db = $db;
+        // l'objet est retourné en résultat
+        return $login;
     }
 }

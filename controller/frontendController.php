@@ -16,7 +16,7 @@ function homeView()
 function listPosts()
 {
     $postsManager = new \OpenClassrooms\Projet4\Model\PostsManager(); 
-    $posts = $postsManager->getPosts(); 
+    $posts = $postsManager->getPosts();
     require('view/frontend/listPostsView.php');
 }
 

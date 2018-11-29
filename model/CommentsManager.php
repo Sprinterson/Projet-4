@@ -28,6 +28,20 @@ class CommentsManager
         return $comments; 
     }
 
+     public function getAllComments(){
+        $comments = [];
+
+        $db = \OpenClassrooms\Projet4\Model\Database::dbConnect(); 
+        $req = $db->prepare('SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM comments ORDER BY comment_date DESC');
+        $req->execute(array());
+
+        while ($data = $req->fetch($db::FETCH_ASSOC)){
+           $comments[]  = new \OpenClassrooms\Projet4\Model\Comment($data); // On instancie le tableau en nouvel objet 
+        };
+
+        return $comments; 
+    }   
+
 
     public function postComment($postId, $author, $comment){
 

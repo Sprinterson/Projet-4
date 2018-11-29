@@ -17,9 +17,19 @@ try {
             adminAccess();
         }
 
+        // Redirige sur la page vérifiant les identifiants de connexion
+        elseif ($_GET['action'] == 'adminLogin'){
+            adminLogin();
+        }
+
         // Redirige sur la page d'administration
-        elseif ($_GET['action'] == 'admin'){
+        elseif ($_GET['action'] == 'adminView'){
             adminView();
+        }
+
+        // Redirige sur la page de déconnection
+        elseif ($_GET['action'] == 'adminLogout'){
+            adminLogout();
         }
 
         // Redirige sur la page de rédaction de billet
@@ -31,6 +41,7 @@ try {
         elseif ($_GET['action'] == 'newPost'){
             if (!empty($_POST['title']) && !empty($_POST['content'])){
                     addPost($_POST['title'], $_POST['content']);
+                    adminView();
             }
             else{
                 throw new Exception('Tous les champs ne sont pas remplis !');
@@ -46,6 +57,12 @@ try {
         elseif ($_GET['action'] == 'deletePost'){
                 deletePost($_POST['title'], $_POST['content']);
         }
+
+        // Redirige sur la page de suppression de billet
+        elseif ($_GET['action'] == 'commentsView'){
+            commentsView();
+        }
+
 
         // Redirige sur la page d'article avec commentaires
         elseif ($_GET['action'] == 'post'){

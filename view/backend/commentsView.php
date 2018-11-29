@@ -6,28 +6,23 @@ $title = 'Gérer les commentaires'; ?>
 <?php ob_start(); ?>
 
 <section id="comments-view">
-	<h1>Supprimer un billet</h1>	
+	<h1>Gérer les commentaires</h1>	
 
     <br/>
 
     <?php
-        foreach ($posts as $data)
+        foreach ($comments as $data)
         {
         ?>
             <div class="news">
-                <h2>
-                    <a href="index.php?action=post&amp;id=<?= $data->id() ?>"><?= htmlspecialchars($data->title()) ?></a>
-                    <em>le <?= $data->creation_date_fr() ?></em>
-                </h2>
-                <a href="index.php?action=deletePost&amp;>id=<?= $data->id() ?>" class="delete-comment-link">Supprimer le commentaire</a> 
+                <div class="comment-author"><p><?= nl2br(htmlspecialchars($data->author()))?></p></div>
+                <div class="comment-content"><p><?= nl2br(htmlspecialchars($data->comment()))?></p></div>
+                <div class="comment-modify"><a href=""><p>Modifier</p></a></div>
+                <div class="comment-delete"><a href=""><p>Supprimer</p></a></div>
             </div>
         <?php
         }
-
-    //$posts->closeCursor();
     ?>
-
-
 
 </section>
 
