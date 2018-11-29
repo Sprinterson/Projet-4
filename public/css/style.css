@@ -37,7 +37,6 @@
 
 }
 
-
 /*STYLE CSS PROJET 4*/
 
 /*=== CORPS ==================================================================================================================*/
@@ -152,10 +151,6 @@ nav li:hover
     margin-right: 25px;
 }
 
-
-
-
-
 @media all and (max-width: 1366px)/*=========================*/
 {
 
@@ -168,7 +163,7 @@ nav li:hover
 
 @media all and (max-width: 720px)/*=========================*/
 {
-	
+
 }
 
 @media all and (max-width: 480px)/*=========================*/
@@ -316,7 +311,7 @@ nav li:hover
 	position: relative;
 	width: 90%;
 	top: 20px;
-	padding: 5px 10px;
+	padding: 5px 20px;
 	margin: auto;
 	margin-bottom: 15px;
 
@@ -409,7 +404,7 @@ nav li:hover
 	position: relative;
 	width: 50%;
 	margin: auto;
-	margin-left: 100px;;
+	margin-left: 100px;
 	margin-bottom: 10px;
 	padding: 5px 10px;
 
@@ -461,6 +456,331 @@ footer
 
 	background-color: white;
 	color: black;
+}
+
+@media all and (max-width: 1366px)/*=========================*/
+{
+
+}
+
+@media all and (max-width: 1024px)/*=========================*/
+{
+
+}
+
+@media all and (max-width: 720px)/*=========================*/
+{
+	
+}
+
+@media all and (max-width: 480px)/*=========================*/
+{
+
+}
+
+/*=== ADMIN ACCESS ==================================================================================================================*/
+
+#admin-access
+{
+	position: relative;
+	height: 250px;
+	width: 400px;
+	margin: auto;
+	margin-top: 100px;
+	margin-bottom: 100px;
+	text-align: center;	
+
+	background-color: white;
+	color: black;
+	border-radius: 10px;
+}
+
+#admin-access h1
+{
+	position: relative;
+	margin: auto;
+	top: 20px;
+	margin-bottom: 50px;
+
+	font-family: 'caviar_dreamsregular';
+	font-weight: normal;
+}
+
+#admin-access form div
+{
+	margin: 15px;
+}
+
+#admin-access form input
+{
+	margin: 5px;
+}
+
+@media all and (max-width: 1366px)/*=========================*/
+{
+
+}
+
+@media all and (max-width: 1024px)/*=========================*/
+{
+
+}
+
+@media all and (max-width: 720px)/*=========================*/
+{
+	
+}
+
+@media all and (max-width: 480px)/*=========================*/
+{
+
+}
+
+
+
+/*=== ADMIN ==================================================================================================================*/
+
+#admin
+{
+	position: relative;
+	height: 800px;
+	width: 90%;
+	left: 5%;
+	margin-top: 100px;
+	margin-bottom: 100px;
+
+	background-color: white;
+	color: black;
+	
+}
+
+#admin h1
+{
+	position: relative;
+	left: 20px;
+	top: 20px;
+	margin-bottom: 50px;
+
+	font-family: 'caviar_dreamsregular';
+	font-weight: normal;
+}
+
+#admin h2
+{
+	position: relative;
+	left: 5%;
+}
+
+@media all and (max-width: 1366px)/*=========================*/
+{
+
+}
+
+@media all and (max-width: 1024px)/*=========================*/
+{
+
+}
+
+@media all and (max-width: 720px)/*=========================*/
+{
+	
+}
+
+@media all and (max-width: 480px)/*=========================*/
+{
+
+}
+
+
+/*=== NEW POST ==================================================================================================================*/
+
+#new-post
+{
+	position: relative;
+	height: 800px;
+	width: 90%;
+	left: 5%;
+	margin-top: 100px;
+	margin-bottom: 100px;
+
+	background-color: white;
+	color: black;
+}
+
+#new-post h1
+{
+	position: relative;
+	left: 20px;
+	top: 20px;
+	margin-bottom: 50px;
+
+	font-family: 'caviar_dreamsregular';
+	font-weight: normal;
+}
+
+#new-post form
+{
+	position: relative;
+	width: 50%;
+	margin: auto;
+	margin-left: 100px;
+	margin-bottom: 10px;
+	padding: 5px 10px;
+
+	font-family: 'open_sansregular', sans-serif;
+	background-color: white;
+	color: black;
+	border-radius: 10px;
+}
+
+#new-post form div
+{
+	margin-bottom: 10px;
+}
+
+#title
+{
+	width: 400px;
+}
+
+#new-post textarea
+{
+	height: 350px;
+	width: 800px;
+}
+
+@media all and (max-width: 1366px)/*=========================*/
+{
+
+}
+
+@media all and (max-width: 1024px)/*=========================*/
+{
+
+}
+
+@media all and (max-width: 720px)/*=========================*/
+{
+	
+}
+
+@media all and (max-width: 480px)/*=========================*/
+{
+
+}
+
+/*=== DELETE POST ==================================================================================================================*/
+
+#delete-post
+{
+	position: relative;
+	margin-top: 50px;
+	width: 90%;
+	left: 5%;
+	padding: 10px;
+	padding-bottom: 50px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+
+	background-color: #F0F0F0;
+}
+
+#delete-post h1
+{
+	position: relative;
+	left: 20px;
+	top: 20px;
+	margin-bottom: 50px;
+
+	color: black;
+	font-family: 'caviar_dreamsregular';
+	font-weight: normal;
+}
+
+#delete-post .news
+{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+
+#delete-post .news h2
+{
+	width: 80%;
+}
+
+.delete-post-link
+{
+	margin: auto;
+}
+
+@media all and (max-width: 1366px)/*=========================*/
+{
+
+}
+
+@media all and (max-width: 1024px)/*=========================*/
+{
+
+}
+
+@media all and (max-width: 720px)/*=========================*/
+{
+	
+}
+
+@media all and (max-width: 480px)/*=========================*/
+{
+
+}
+
+/*=== COMMENTS VIEW ==================================================================================================================*/
+
+#comments-view
+{
+	position: relative;
+	margin-top: 50px;
+	width: 90%;
+	left: 5%;
+	padding: 10px;
+	padding-bottom: 50px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+
+	background-color: #F0F0F0;
+}
+
+#comments-view h1
+{
+	position: relative;
+	left: 20px;
+	top: 20px;
+	margin-bottom: 50px;
+
+	color: black;
+	font-family: 'caviar_dreamsregular';
+	font-weight: normal;
+}
+
+#comments-view .news
+{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+
+#comments-view .news h2
+{
+	width: 80%;
+}
+
+.delete-comment-link
+{
+	margin: auto;
 }
 
 @media all and (max-width: 1366px)/*=========================*/

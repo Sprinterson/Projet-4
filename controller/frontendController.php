@@ -4,24 +4,23 @@
 require_once('model/PostsManager.php');
 require_once('model/CommentsManager.php');
 
+// Chargement de la page d'accueil
 function homeView()
 {
     $postsManager = new \OpenClassrooms\Projet4\Model\PostsManager(); // Création d'un objet
     $posts = $postsManager->lastPost(); // Appel d'une fonction de cet objet
-    //var_dump($posts);
+    require('view/frontend/homeView.php'); // Chargement de la page concernée
+} 
 
-    require('view/frontend/homeView.php');
-}
-
+// Chargement de la page listant les articles
 function listPosts()
 {
     $postsManager = new \OpenClassrooms\Projet4\Model\PostsManager(); 
     $posts = $postsManager->getPosts(); 
-    //var_dump($posts);
-
     require('view/frontend/listPostsView.php');
 }
 
+// Chargement de la page du billet sélectionné, et de ses commentaires
 function post()
 {
     $postsManager = new \OpenClassrooms\Projet4\Model\PostsManager();
@@ -29,15 +28,14 @@ function post()
 
     $posts = $postsManager->getPost($_GET['id']);
     $comments = $commentsManager->getComments($_GET['id']);
-    //var_dump($posts);
 
     require('view/frontend/postView.php');
 }
 
+// Fonctionnalité d'ajout de commentaires
 function addComment($postId, $author, $comment)
 {
     $commentsManager = new \OpenClassrooms\Projet4\Model\CommentsManager();
-
     $affectedLines = $commentsManager->postComment($postId, $author, $comment);
 
     if ($affectedLines === false) {

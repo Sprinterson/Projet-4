@@ -2,10 +2,13 @@
 
 <?php ob_start(); ?>
 <section id="homepage">
+
          <h1>Bienvenue sur le blog de Jean Forteroche</h1>
+
 </section>
 
 <section id="last-article">
+
     <br/>
     <h2 id="last-article-title">Dernier article publié</h2>
     <br/>
@@ -30,6 +33,7 @@
 
     //$posts->closeCursor();
     ?>
+    
 </section>
 
 <?php $content = ob_get_clean(); ?>

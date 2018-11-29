@@ -12,7 +12,7 @@
         	<ul>
                 <li><a href="index.php" class="fade">Accueil</a></li>
                 <li><a href="?action=listPosts" class="fade">Articles</a></li>
-                <li><a href="?action=adminAccess" class="fade">Administration</a></li>
+                <li><a href="?action=admin" class="fade">Administration</a></li>
             </ul>
         </nav>
     </header>

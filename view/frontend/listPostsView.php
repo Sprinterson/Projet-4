@@ -1,4 +1,4 @@
-<?php $title = 'Le blog de Jean Forteroche'; ?>
+<?php $title = 'Derniers articles'; ?>
 
 <?php ob_start(); ?>
 

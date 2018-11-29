@@ -4,9 +4,7 @@ namespace OpenClassrooms\Projet4\Model; // La classe sera dans ce namespace
 
 class Comment
 {
-
  // Propriétés
-
     private $_id;
     private $_post_id;
     private $_author;
@@ -15,7 +13,6 @@ class Comment
 
 
  // Hydratation
-
     public function __construct(array $data){
             foreach ($data as $key => $value){
                 $method = 'set'.ucfirst($key);
@@ -26,8 +23,8 @@ class Comment
             }
     }
 
- // Getters
 
+ // Getters
     public function id(){ 
         return $this->_id; 
     }
@@ -49,8 +46,8 @@ class Comment
         var_dump($comment_date_fr);
     }
 
- // Setters
 
+ // Setters
     public function setId($id){
         $this->_id = (int) $id;
     }
@@ -72,12 +69,10 @@ class Comment
     }
 
     public function setCommentDateFr($comment_date_fr){
-        if (is_string($comment_date_fr)){
+        
             $this->_comment_date_fr = $comment_date_fr;
         }
-        var_dump($comment_date_fr);
-    }
-
+        
 }
 
 
