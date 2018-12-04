@@ -19,9 +19,9 @@
             <?= nl2br(htmlspecialchars($data->content())) ?>
         </p>
     </div>
-        <?php
-        }
-        ?>
+    <?php
+    }
+    ?>
 
     <h2 class="comments">Commentaires</h2>
 
@@ -33,9 +33,9 @@
                 <p><strong><?= htmlspecialchars($comments->author()) ?></strong> le <?= $comments->comment_date_fr() ?></p>
                 <p><?= nl2br(htmlspecialchars($comments->comment())) ?></p>
             </div>
-        <?php
+    <?php
         }
-        ?>
+    ?>
 
     <h2 class="comments">Ajouter un commentaire</h2>
 

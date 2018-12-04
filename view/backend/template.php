@@ -18,7 +18,8 @@
     </header>
         
     <body>
-        <?= $content ?>
+        <div id="container"><?= $content ?>
         <footer></footer>
+        </div>
     </body>
 </html>

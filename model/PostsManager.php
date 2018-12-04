@@ -16,7 +16,6 @@ class PostsManager
 
         // La requête retournée est transformée en tableau 
         $req->execute(array());
-        var_dump($req);
 
         while ($data = $req->fetch($db::FETCH_ASSOC)){
            $posts[]  = new \OpenClassrooms\Projet4\Model\Post($data); // On instancie le tableau en nouvel objet 
@@ -67,13 +66,12 @@ class PostsManager
         return $newpost;
     }
 
-    public function deletePost($title, $content){
-        $deletepost=[];
+    public function deletePost(\OpenClassrooms\Projet4\Model\Post $post){
+        $id= (int) $_POST['delete_id'];
+        $query = "DELETE FROM posts WHERE id= ?";
         $db = \OpenClassrooms\Projet4\Model\Database::dbConnect();
-        $req = $db->exec('DELETE FROM posts(title, content) VALUES(?, ?)');
-        $req->execute(array($title, $content));
-  
-        return $deletepost;
+        $q = $db->prepare($query);
+        $q->execute(array($id));
     }
 
 }

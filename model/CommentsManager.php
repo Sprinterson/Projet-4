@@ -59,7 +59,7 @@ class CommentsManager
     }
 
 
-    public function deleteComment($postId, $author, $comment){
+    public function deleteComment($id){
         $db = \OpenClassrooms\Projet4\Model\Database::dbConnect();
         $db->exec('DELETE FROM comments(post_id, author, comment, comment_date) VALUES(?, ?, ?, ?)');
     }

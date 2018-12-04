@@ -50,12 +50,13 @@ try {
             
         // Redirige sur la page de suppression de billet
         elseif ($_GET['action'] == 'deletePostView'){
+
             deletePostView();
         }
 
-        // Suppression d'un nouveau billet
+        // Suppression d'un billet
         elseif ($_GET['action'] == 'deletePost'){
-                deletePost($_POST['title'], $_POST['content']);
+            deletePost();
         }
 
         // Redirige sur la page de suppression de billet
@@ -91,14 +92,14 @@ try {
             }
         }
 
-        // Fonction de suppression de commentaire
+        // Suppression de commentaire
         elseif ($_GET['action'] == 'deleteComment'){
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                deleteComment($_GET['id'], $_POST['author'], $_POST['comment']);
-            }
-            else {
-                throw new Exception('Aucun identifiant de commentaire envoyé');
-            }
+            deleteComment();
+        }
+
+        // Modification de commentaire
+        elseif ($_GET['action'] == 'modifyComment'){
+            modify();
         }
     }
     // Nom de la page d'accueil sur laquelle on est directement redirigé sur l'URL ne contient aucun paramètre.
