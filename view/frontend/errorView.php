@@ -1,4 +1,4 @@
-<?php $title = 'Le blog de Jean Forteroche'; ?>
+<?php $title = 'Erreur détectée'; ?>
 
 <?php ob_start(); ?>
 

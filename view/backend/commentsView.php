@@ -29,8 +29,7 @@ $title = 'Gérer les commentaires'; ?>
                 <div class="comment-delete">
                     <form id="delete" method="post" action="index.php?action=deleteComment">
                         <input type="hidden" name="delete_id" value="<?php print $id ?>"/>
-                        <input type="submit" name="delete" value="Supprimer" <?php header('http://localhost/Projet-4/index.php?action=commentsView'); ?>/>
-
+                        <input type="submit" name="delete" value="Supprimer"/>
                     </form>
                 </div>
             </div>
