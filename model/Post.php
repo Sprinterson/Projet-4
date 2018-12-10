@@ -58,8 +58,8 @@ class Post
     }
 
     public function setCreationDateFr($creation_date_fr){
-        if (checkdate($creation_date)){
-            $this->_creation_date = $creation_date;
-        }  
+        //if (checkdate($creation_date)){
+            $this->_creation_date_fr = $creation_date_fr;
+        //}  
     }
 }

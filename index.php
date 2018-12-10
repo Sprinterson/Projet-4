@@ -7,29 +7,33 @@ try {
     // L'isset est le nom du paramètre de l'URL (comme 'action')
     if (isset($_GET['action'])){
 
-        // Redirige sur la page de la liste d'articles si le paramètre d'action est listPosts
-        if ($_GET['action'] == 'listPosts'){
-            $frontendManager = new \OpenClassrooms\Projet4\Controller\FrontEndController();
-            $frontendManager->listPosts();
-        }
+        // ADMIN ACCESS ====================================================================================
 
         // Redirige sur la page d'accès à l'administration
-        elseif ($_GET['action'] == 'adminAccess'){
+        if ($_GET['action'] == 'adminAccess'){
             $backendManager = new \OpenClassrooms\Projet4\Controller\BackEndController();
             $backendManager->adminAccess();
         }
+
+        // ADMIN LOGIN =====================================================================================
 
         // Redirige sur la page vérifiant les identifiants de connexion
         elseif ($_GET['action'] == 'adminLogin'){
             $backendManager = new \OpenClassrooms\Projet4\Controller\BackEndController();
             $backendManager->adminLogin();
+            $backendManager->checkLogin();
         }
+
+        // ADMIN VIEW ==================================================================================
 
         // Redirige sur la page d'administration
         elseif ($_GET['action'] == 'adminView'){
             $backendManager = new \OpenClassrooms\Projet4\Controller\BackEndController();
             $backendManager->adminView();
+            $backendManager->checkLogin();
         }
+
+        // ADMIN LOGOUT ====================================================================================
 
         // Redirige sur la page de déconnection
         elseif ($_GET['action'] == 'adminLogout'){
@@ -37,13 +41,16 @@ try {
             $backendManager->adminLogout();
         }
 
-        // Redirige sur la page de rédaction de billet
-        elseif ($_GET['action'] == 'newPostView'){
+        // POSTS BOARD VIEW ================================================================================
+
+        // Redirige sur la page de gestion des articles
+        elseif ($_GET['action'] == 'postsBoardView'){ 
             $backendManager = new \OpenClassrooms\Projet4\Controller\BackEndController();
-            $backendManager->newPostView();
+            $backendManager->postsBoardView();
+            $backendManager->checkLogin();      
         }
 
-        // Création d'un nouveau billet
+        // Création d'un nouvel article
         elseif ($_GET['action'] == 'newPost'){
             if (!empty($_POST['title']) && !empty($_POST['content'])){
                 $backendManager = new \OpenClassrooms\Projet4\Controller\BackEndController();
@@ -53,26 +60,93 @@ try {
                 throw new Exception('Tous les champs ne sont pas remplis !');
             }
         }
-            
-        // Redirige sur la page de suppression de billet
-        elseif ($_GET['action'] == 'deletePostView'){
-            $backendManager = new \OpenClassrooms\Projet4\Controller\BackEndController();
-            $backendManager->deletePostView();
+
+        // Redirige sur la page de modification d'un article
+        elseif ($_GET['action'] == 'modifyPostView'){
+            if (isset($_GET['id']) && $_GET['id'] > 0){
+                $backendManager = new \OpenClassrooms\Projet4\Controller\BackEndController();
+                $backendManager->modifyPostView();
+            }
+            else {
+                throw new Exception('Aucun identifiant d\'article envoyé');
+                $backendManager = new \OpenClassrooms\Projet4\Controller\BackEndController();
+                $backendManager->errorView();
+            }
         }
 
-        // Suppression d'un billet
+        // Modification d'un article existant
+        elseif ($_GET['action'] == 'modifyPost'){
+            if (!empty($_POST['title']) && !empty($_POST['content'])){
+                $backendManager = new \OpenClassrooms\Projet4\Controller\BackEndController();
+                $backendManager->modifyPost($_POST['title'], $_POST['content']);
+            }
+            else{
+                throw new Exception('Tous les champs ne sont pas remplis !');
+            }
+        }    
+            
+        // Suppression d'un article
         elseif ($_GET['action'] == 'deletePost'){
             $backendManager = new \OpenClassrooms\Projet4\Controller\BackEndController();
             $backendManager->deletePost();
         }
 
-        // Redirige sur la page de suppression de billet
-        elseif ($_GET['action'] == 'commentsView'){
+        // COMMENTS VIEW ===================================================================================
+
+        // Redirige sur la page de gestion des commentaires
+        elseif ($_GET['action'] == 'commentsBoardView'){
             $backendManager = new \OpenClassrooms\Projet4\Controller\BackEndController();
-            $backendManager->commentsView();
+            $backendManager->commentsBoardView();
+            $backendManager->checkLogin();
         }
 
-        // Redirige sur la page d'article avec commentaires
+        // Redirige sur la page de modification d'un commentaire
+        elseif ($_GET['action'] == 'modifyCommentView'){
+            if (isset($_GET['id']) && $_GET['id'] > 0){
+                $backendManager = new \OpenClassrooms\Projet4\Controller\BackEndController();
+                $backendManager->modifyCommentView();
+            }
+            else {
+                throw new Exception('Aucun identifiant de commentaire envoyé');
+                $backendManager = new \OpenClassrooms\Projet4\Controller\BackEndController();
+                $backendManager->errorView();
+            }
+        }
+
+        // Modification d'un commentaire existant
+        elseif ($_GET['action'] == 'modifyComment'){
+            if (!empty($_POST['comment'])){
+                $backendManager = new \OpenClassrooms\Projet4\Controller\BackEndController();
+                $backendManager->modifyComment($_POST['comment']);
+            }
+            else{
+                throw new Exception('Tous les champs ne sont pas remplis !');
+            }
+        }    
+
+        // Suppression de commentaire
+        elseif ($_GET['action'] == 'deleteComment'){
+            $backendManager = new \OpenClassrooms\Projet4\Controller\BackEndController();
+            $backendManager->deleteComment();
+        }
+
+        // Modification de commentaire
+        elseif ($_GET['action'] == 'modifyComment'){
+            $backendManager = new \OpenClassrooms\Projet4\Controller\BackEndController();
+            $backendManager->modify();
+        }
+
+        // LIST POSTS VIEW =================================================================================
+
+        // Redirige sur la page de la liste d'articles si le paramètre d'action est listPosts
+        elseif ($_GET['action'] == 'listPosts'){
+            $frontendManager = new \OpenClassrooms\Projet4\Controller\FrontEndController();
+            $frontendManager->listPosts();
+        }
+
+        // POST VIEW =======================================================================================
+
+        // Redirige sur la page de l'article avec ses commentaires
         elseif ($_GET['action'] == 'post'){
             if (isset($_GET['id']) && $_GET['id'] > 0){
                 $frontendManager = new \OpenClassrooms\Projet4\Controller\FrontEndController();
@@ -89,31 +163,22 @@ try {
         elseif ($_GET['action'] == 'addComment'){
             if (isset($_GET['id']) && $_GET['id'] > 0){
                 if (!empty($_POST['author']) && !empty($_POST['comment'])) {
+                    $id = $_GET['id'];
                     $frontendManager = new \OpenClassrooms\Projet4\Controller\FrontEndController();
                     $frontendManager->addComment($_GET['id'], $_POST['author'], $_POST['comment']);
                 }
                 else {
                     throw new Exception('Tous les champs ne sont pas remplis !');
-                    header('frontend/errorView.php');
                 }
             }
             else {
                 throw new Exception('Aucun identifiant de commentaire envoyé');
             }
         }
-
-        // Suppression de commentaire
-        elseif ($_GET['action'] == 'deleteComment'){
-            $backendManager = new \OpenClassrooms\Projet4\Controller\BackEndController();
-            $backendManager->deleteComment();
-        }
-
-        // Modification de commentaire
-        elseif ($_GET['action'] == 'modifyComment'){
-            $backendManager = new \OpenClassrooms\Projet4\Controller\BackEndController();
-            $backendManager->modify();
-        }
     }
+
+    // HOME VIEW ===========================================================================================
+
     // Nom de la page d'accueil sur laquelle on est directement redirigé sur l'URL ne contient aucun paramètre.
     else {
         $frontendManager = new \OpenClassrooms\Projet4\Controller\FrontEndController();
@@ -122,10 +187,10 @@ try {
 }
 
 
-catch(Exception $message) {
-
-    header ('frontend/errorView.php');
-    echo 'Erreur : ' . $message->getMessage();
+catch(Exception $message) {  
+    $errorMessage = 'Erreur : ' . $message->getMessage();
+    $frontendManager = new \OpenClassrooms\Projet4\Controller\FrontEndController();
+    $frontendManager->errorView($errorMessage); 
 }
 
 

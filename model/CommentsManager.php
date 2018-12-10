@@ -28,6 +28,20 @@ class CommentsManager
         return $comments; 
     }
 
+    public function getComment($commentId){
+        $comment=[];
+
+        $db = \OpenClassrooms\Projet4\Model\Database::dbConnect();
+        $req = $db->prepare('SELECT comment FROM comments WHERE id = ?');
+        $req->execute(array($commentId));
+
+        while ($data = $req->fetch($db::FETCH_ASSOC)){
+           $comment[]  = new \OpenClassrooms\Projet4\Model\Comment($data);
+        };
+
+        return $comment;
+    }
+
      public function getAllComments(){
         $comments = [];
 
@@ -58,10 +72,25 @@ class CommentsManager
         return $newcomments;
     }
 
-
-    public function deleteComment($id){
+    public function modifyComment($comment){
+        $id= (int) $_POST['modified_id'];
+        $modifiedComment=[];
         $db = \OpenClassrooms\Projet4\Model\Database::dbConnect();
-        $db->exec('DELETE FROM comments(post_id, author, comment, comment_date) VALUES(?, ?, ?, ?)');
+        $req = $db->prepare('UPDATE comments SET comment=? WHERE id=?');
+        $req->execute(array($comment, $id));
+        while ($data = $req->fetch($db::FETCH_ASSOC)){
+           $modifiedComment[]  = new \OpenClassrooms\Projet4\Model\Comment($data);
+        };
+
+        return $modifiedComment;
+    }
+
+    public function deleteComment(){
+        $id= (int) $_POST['delete_id'];
+        $query = "DELETE FROM comments WHERE id= ?";
+        $db = \OpenClassrooms\Projet4\Model\Database::dbConnect();
+        $q = $db->prepare($query);
+        $q->execute(array($id));
     }
 }
 

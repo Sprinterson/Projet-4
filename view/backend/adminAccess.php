@@ -1,13 +1,20 @@
 <?php 
+
+$title = 'Accès à l\'administration';
 session_start();
 
-$title = 'Accès à l\'administration'; ?>
+if (session_status() == PHP_SESSION_ACTIVE){
+            echo 'Session is active';
+            if (!empty($_SESSION['pseudo']) && !empty($_SESSION['password'])){
+                header('Location:http://localhost/Projet-4/index.php?action=adminView');
+            }
+};    
 
-<?php ob_start(); ?>
+ ob_start(); ?>
 
 <section id="admin-access">
 
-	<h1>Panneau d'admnistration</h1>
+	<h1>Connexion à l'admnistration</h1>
 	<form action="index.php?action=adminLogin" method="post">
         <div>
             <label for="pseudo">Pseudo</label><br />

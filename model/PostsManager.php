@@ -10,10 +10,8 @@ class PostsManager
     public function getPosts(){
         // On se connecte à la base de données
         $db = \OpenClassrooms\Projet4\Model\Database::dbConnect(); 
-
         // On établit une requête dans la base de données pour récupérer les billets
         $req = $db->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM posts ORDER BY creation_date DESC LIMIT 0, 100');
-
         // La requête retournée est transformée en tableau 
         $req->execute(array());
 
@@ -66,13 +64,25 @@ class PostsManager
         return $newpost;
     }
 
-    public function deletePost(\OpenClassrooms\Projet4\Model\Post $post){
-        $id= (int) $_POST['delete_id'];
-        $query = "DELETE FROM posts WHERE id= ?";
+    public function modifyPost($title, $content){
+        $id= (int) $_POST['modified_id'];
+        $modifiedPost=[];
         $db = \OpenClassrooms\Projet4\Model\Database::dbConnect();
-        $q = $db->prepare($query);
+        $req = $db->prepare('UPDATE posts SET title=?, content=? WHERE id=?');
+        $req->execute(array($title, $content, $id));
+        while ($data = $req->fetch($db::FETCH_ASSOC)){
+           $modifiedPost[]  = new \OpenClassrooms\Projet4\Model\Post($data);
+        };
+
+        return $modifiedPost;
+    }
+
+    public function deletePost(){
+        $id= (int) $_POST['delete_id'];
+        $req = "DELETE FROM posts WHERE id=?";
+        $db = \OpenClassrooms\Projet4\Model\Database::dbConnect();
+        $q = $db->prepare($req);
         $q->execute(array($id));
     }
 
 }
-

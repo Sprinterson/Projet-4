@@ -12,7 +12,7 @@ class UsersManager
         $db = \OpenClassrooms\Projet4\Model\Database::dbConnect(); 
 
         // On établit une requête dans la base de données pour récupérer les identifiants
-        $req = $db->query('SELECT id, pseudo, password FROM users');
+        $req = $db->query('SELECT id, pseudo, password, email FROM users');
 
         // La requête retournée est transformée en tableau 
         $req->execute(array());

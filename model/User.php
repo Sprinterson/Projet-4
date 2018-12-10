@@ -8,6 +8,7 @@ class User
     private $_id;
     private $_pseudo;
     private $_password;
+    private $_email;
 
 
  // Hydratation
@@ -35,6 +36,10 @@ class User
         return $this->_password; 
     }
 
+    public function email(){ 
+        return $this->_email; 
+    }
+
 
  // Setters
     public function setId($id){
@@ -52,4 +57,13 @@ class User
             $this->_password = $password;
         }
     }
+
+    public function setEmail($email){
+        /*if (filter_var($email, FILTER_VALIDATE_EMAIL) === true){*/
+            $this->_email = $email;
+        //}*/
+    }    
 }
+
+
+

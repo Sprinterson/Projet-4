@@ -10,6 +10,8 @@ require_once('model/UsersManager.php');
 class BackEndController
 {
 
+    // ADMIN ACCESS ====================================================================================
+
     // Chargement de la page d'accès à l'administration
     function adminAccess(){
         require('view/backend/adminAccess.php');
@@ -19,11 +21,18 @@ class BackEndController
     function adminLogin(){
         $usersManager = new \OpenClassrooms\Projet4\Model\UsersManager();
         $login = $usersManager->getLogin();
+        $pseudo = $login->pseudo();
+        $password = $login->password();
         require('view/backend/adminLogin.php');
     }
 
+    // ADMIN VIEW ======================================================================================
+
     // Chargement du tableau de bord d'administration
     function adminView(){
+        $usersManager = new \OpenClassrooms\Projet4\Model\UsersManager();
+        $login = $usersManager->getLogin();
+        $email = $login->email();
         require('view/backend/adminView.php');
     }
 
@@ -32,75 +41,93 @@ class BackEndController
         require('view/backend/adminLogout.php');
     }
 
-    // Chargement de la page d'ajout de billet
-    function newPostView(){
-        require('view/backend/newPostView.php');
+    // POSTS BOARD VIEW =================================================================================
+
+    // Chargement de la page de gestion des articles
+    function postsBoardView(){
+        $postsManager = new \OpenClassrooms\Projet4\Model\PostsManager(); 
+        $posts = $postsManager->getPosts();
+        require('view/backend/postsBoardView.php');
     }
 
-    // Chargement de la fonction d'ajout de billet
+    // Chargement de la fonction d'ajout de l'article
     function addPost($title, $content){
         $postsManager = new \OpenClassrooms\Projet4\Model\PostsManager();
         $affectedLines = $postsManager->addPost($title, $content);
 
-        if ($affectedLines === false){
-            throw new Exception('Impossible d\'ajouter le billet !');
+        /*if ($affectedLines === false){
+            throw new Exception('Impossible d\'ajouter l'article !');
         }
-        else {
-            header('Location: index.php?action=post&id=' . $id);
-        }
+        else {*/
+            header('Location:http://localhost/Projet-4/index.php?action=listPostsView.php');
+        //}
     }
 
-    // Chargement de la page de suppression de billet
-    function deletePostView(){
-    	$postsManager = new \OpenClassrooms\Projet4\Model\PostsManager(); 
-        $posts = $postsManager->getPosts();
+      // Chargement de la page de modification de l'article
+    function modifyPostView(){
+        $postsManager = new \OpenClassrooms\Projet4\Model\PostsManager();
+        $posts = $postsManager->getPost($_GET['id']);
+        require('view/backend/modifyPostView.php');
+    }
 
-        require('view/backend/deletePostView.php');
+    // Chargement de la fonction de modification de l'article
+    function modifyPost($title, $content){
+        $postsManager = new \OpenClassrooms\Projet4\Model\PostsManager(); 
+        $postsManager->modifyPost($title, $content);
+        header('Location:http://localhost/Projet-4/index.php?action=listPostsView.php');
     }
 
     // Chargement de la fonction de suppression de billet
     function deletePost(){
-        $id= (int) $_POST['delete_id'];
-        $query = "DELETE FROM posts WHERE id= ?";
-        $db = \OpenClassrooms\Projet4\Model\Database::dbConnect();
-        $q = $db->prepare($query);
-        $q->execute(array($id));
+        $postsManager = new \OpenClassrooms\Projet4\Model\PostsManager(); 
+        $postsManager->deletePost(); 
+        header('Location:http://localhost/Projet-4/index.php?action=adminView');
     }
 
+    // COMMENTS BOARD VIEW ===================================================================================
+
     // Chargement de la page de gestion des commentaires
-    function commentsView(){
+    function commentsBoardView(){
     	$commentsManager = new \OpenClassrooms\Projet4\Model\CommentsManager(); 
         $comments = $commentsManager->getAllComments(); 
+        require('view/backend/commentsBoardView.php');
+    }
 
-        require('view/backend/commentsView.php');
+    // Chargement de la page de modification du commentaire
+    function modifyCommentView(){
+        $commentsManager = new \OpenClassrooms\Projet4\Model\CommentsManager();
+        $comments = $commentsManager->getComment($_GET['id']);
+        require('view/backend/modifyCommentView.php');
+    }
+
+    // Chargement de la fonction de modification de commentaire
+    function modifyComment($comment){
+        $commentsManager = new \OpenClassrooms\Projet4\Model\CommentsManager(); 
+        $commentsManager->modifyComment($comment);
+        header('Location:http://localhost/Projet-4/index.php?action=listPostsView.php');
     }
 
     // Chargement de la fonction de suppression de commentaire
     function deleteComment(){
-        $id= (int) $_POST['delete_id'];
-        $query = "DELETE FROM comments WHERE id= ?";
-        $db = \OpenClassrooms\Projet4\Model\Database::dbConnect();
-        $q = $db->prepare($query);
-        $q->execute(array($id));
-
-        header('Location : index.php');
+        $commentsManager = new \OpenClassrooms\Projet4\Model\CommentsManager(); 
+        $commentsManager->deleteComment(); 
+        header('Location:http://localhost/Projet-4/index.php?action=adminView');
     }
 
-    // Chargement de la fonction de suppression de billet
-    function modifyComment(){
-        $id= (int) $_POST['modify_id'];
-        $query = "DELETE FROM comments WHERE id= ?";
-        $db = \OpenClassrooms\Projet4\Model\Database::dbConnect();
-        $q = $db->prepare($query);
-        $q->execute(array($id));
+    // CHECK LOGIN =====================================================================================
+
+    // Fonction de vérification des paramètres de connection sur les pages membres
+    function checkLogin(){
+        if (session_status() == PHP_SESSION_ACTIVE){
+            echo 'Session is active';
+            if (!empty($_SESSION['pseudo']) && !empty($_SESSION['password'])){
+            }
+            else{
+                header('Location:http://localhost/Projet-4/index.php');
+            };
+        };    
     }
 }
-
-
-
-
-
-
 
 
 
