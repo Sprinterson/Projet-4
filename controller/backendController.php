@@ -59,7 +59,7 @@ class BackEndController
             throw new Exception('Impossible d\'ajouter l'article !');
         }
         else {*/
-            header('Location:http://localhost/Projet-4/index.php?action=listPostsView.php');
+            header('Location:http://localhost/Projet-4/index.php?action=adminView');
         //}
     }
 
@@ -74,7 +74,7 @@ class BackEndController
     function modifyPost($title, $content){
         $postsManager = new \OpenClassrooms\Projet4\Model\PostsManager(); 
         $postsManager->modifyPost($title, $content);
-        header('Location:http://localhost/Projet-4/index.php?action=listPostsView.php');
+        header('Location:http://localhost/Projet-4/index.php?action=adminView');
     }
 
     // Chargement de la fonction de suppression de billet
@@ -104,7 +104,7 @@ class BackEndController
     function modifyComment($comment){
         $commentsManager = new \OpenClassrooms\Projet4\Model\CommentsManager(); 
         $commentsManager->modifyComment($comment);
-        header('Location:http://localhost/Projet-4/index.php?action=listPostsView.php');
+        header('Location:http://localhost/Projet-4/index.php?action=adminView');
     }
 
     // Chargement de la fonction de suppression de commentaire

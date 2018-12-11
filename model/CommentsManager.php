@@ -15,7 +15,7 @@ class CommentsManager
         $db = \OpenClassrooms\Projet4\Model\Database::dbConnect(); 
 
         // On établit une requête dans la base de données pour récupérer les commentaires
-        $req = $db->prepare('SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM comments WHERE post_id = ? ORDER BY comment_date DESC');
+        $req = $db->prepare('SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%i\') AS comment_date_fr FROM comments WHERE post_id = ? ORDER BY comment_date DESC');
 
         // La requête retournée est transformée en tableau 
         $req->execute(array($postId));
@@ -46,7 +46,7 @@ class CommentsManager
         $comments = [];
 
         $db = \OpenClassrooms\Projet4\Model\Database::dbConnect(); 
-        $req = $db->prepare('SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM comments ORDER BY comment_date DESC');
+        $req = $db->prepare('SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%i\') AS comment_date_fr FROM comments ORDER BY comment_date DESC');
         $req->execute(array());
 
         while ($data = $req->fetch($db::FETCH_ASSOC)){

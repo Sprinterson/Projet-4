@@ -24,7 +24,7 @@
                 </h2>
                 
                 <p>
-                    <?= nl2br(htmlspecialchars($post_resume))?>
+                    <?= nl2br(htmlspecialchars($post_resume))?>...
                     <br/>
                     <a href="index.php?action=post&amp;id=<?= $data->id() ?>" class="comments-link">Lire la suite [...]</a>
                 </p>

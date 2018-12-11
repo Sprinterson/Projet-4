@@ -66,6 +66,7 @@ try {
             if (isset($_GET['id']) && $_GET['id'] > 0){
                 $backendManager = new \OpenClassrooms\Projet4\Controller\BackEndController();
                 $backendManager->modifyPostView();
+                $backendManager->checkLogin();
             }
             else {
                 throw new Exception('Aucun identifiant d\'article envoyé');
@@ -105,6 +106,7 @@ try {
             if (isset($_GET['id']) && $_GET['id'] > 0){
                 $backendManager = new \OpenClassrooms\Projet4\Controller\BackEndController();
                 $backendManager->modifyCommentView();
+                $backendManager->checkLogin();
             }
             else {
                 throw new Exception('Aucun identifiant de commentaire envoyé');
@@ -122,7 +124,7 @@ try {
             else{
                 throw new Exception('Tous les champs ne sont pas remplis !');
             }
-        }    
+        }
 
         // Suppression de commentaire
         elseif ($_GET['action'] == 'deleteComment'){
@@ -130,15 +132,9 @@ try {
             $backendManager->deleteComment();
         }
 
-        // Modification de commentaire
-        elseif ($_GET['action'] == 'modifyComment'){
-            $backendManager = new \OpenClassrooms\Projet4\Controller\BackEndController();
-            $backendManager->modify();
-        }
-
         // LIST POSTS VIEW =================================================================================
 
-        // Redirige sur la page de la liste d'articles si le paramètre d'action est listPosts
+        // Redirige sur la page de la liste d'articles
         elseif ($_GET['action'] == 'listPosts'){
             $frontendManager = new \OpenClassrooms\Projet4\Controller\FrontEndController();
             $frontendManager->listPosts();

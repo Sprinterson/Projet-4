@@ -68,8 +68,7 @@ class Comment
         }
     }
 
-    public function setCommentDateFr($comment_date_fr){
-        
+    public function setComment_Date_Fr($comment_date_fr){   
             $this->_comment_date_fr = $comment_date_fr;
         }
         

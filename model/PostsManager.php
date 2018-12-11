@@ -11,7 +11,7 @@ class PostsManager
         // On se connecte à la base de données
         $db = \OpenClassrooms\Projet4\Model\Database::dbConnect(); 
         // On établit une requête dans la base de données pour récupérer les billets
-        $req = $db->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM posts ORDER BY creation_date DESC LIMIT 0, 100');
+        $req = $db->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%i\') AS creation_date_fr FROM posts ORDER BY creation_date DESC LIMIT 0, 100');
         // La requête retournée est transformée en tableau 
         $req->execute(array());
 
@@ -26,7 +26,7 @@ class PostsManager
 
     public function lastPost(){
         $db = \OpenClassrooms\Projet4\Model\Database::dbConnect();
-        $req = $db->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM posts ORDER BY creation_date DESC LIMIT 0, 1');
+        $req = $db->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%i\') AS creation_date_fr FROM posts ORDER BY creation_date DESC LIMIT 0, 1');
         $req->execute(array());
 
         while ($data = $req->fetch($db::FETCH_ASSOC)){
@@ -41,7 +41,7 @@ class PostsManager
         $posts=[];
 
         $db = \OpenClassrooms\Projet4\Model\Database::dbConnect();
-        $req = $db->prepare('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM posts WHERE id = ?');
+        $req = $db->prepare('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%i\') AS creation_date_fr FROM posts WHERE id = ?');
         $req->execute(array($postId));
 
         while ($data = $req->fetch($db::FETCH_ASSOC)){

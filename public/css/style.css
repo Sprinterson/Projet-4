@@ -366,7 +366,7 @@ footer
 	top: 20px;
 	padding: 5px 20px;
 	margin: auto;
-	margin-bottom: 15px;
+	margin-bottom: 35px;
 
 	background-color: white;
 	color: black;
@@ -455,7 +455,7 @@ footer
 #posts form
 {
 	position: relative;
-	width: 50%;
+	width: 28%;
 	margin: auto;
 	margin-left: 100px;
 	margin-bottom: 10px;
@@ -534,7 +534,19 @@ footer
 
 #admin-access form input
 {
-	margin: 5px;
+	margin: 2px;
+}
+
+.submit-button
+{
+	position: relative;
+	padding: 5px;
+
+	background-color: #173035;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	font-family: 'open_sansregular', sans-serif;
 }
 
 @media all and (max-width: 1366px)/*=========================*/
@@ -564,9 +576,11 @@ footer
 #admin-view
 {
 	position: relative;
+	display: flex;
+	justify-content: space-around;
 	height: 500px;
-	width: 90%;
-	left: 5%;
+	width: 40%;
+	margin: auto;
 	margin-top: 100px;
 	margin-bottom: 100px;
 
@@ -578,7 +592,6 @@ footer
 #admin-view h1
 {
 	position: relative;
-	left: 20px;
 	top: 20px;
 	margin-bottom: 50px;
 
@@ -586,7 +599,7 @@ footer
 	font-weight: normal;
 }
 
-#admin-view h2, p, form
+#admin-view h2,  #admin-view p, #admin-view form
 {
 	position: relative;
 	left: 5%;
@@ -597,6 +610,11 @@ footer
 	padding: 5px;
 	background-color: #173035;
 	color: white;
+}
+
+#admin-view .submit-button
+{
+	margin-top: 10px;
 }
 
 @media all and (max-width: 1366px)/*=========================*/
@@ -838,7 +856,7 @@ footer
 	width: 125px;
 	padding: 0 10px;
 	
-	background-color: #64807F;
+	background-color: #3a3e2d;
 	color: white;
 	border-radius: 5px 0px 0px 5px;
 }
@@ -871,7 +889,7 @@ footer
 	padding: 0 10px;
 	text-align: center;
 	
-	background-color: #297845;
+	background-color: #8b9291;
 }
 
 .content-modify #modify
@@ -887,14 +905,14 @@ footer
 	padding: 0 10px;
 	text-align: center;
 	
-	background-color: #C22934;
+	background-color: #173035;
 	border-radius: 0px 5px 5px 0px;
 }
 
 .content-delete #delete
 {
 	position: relative;
-	bottom: -15px;
+	bottom: -17px;
 
 	color: white;
 }

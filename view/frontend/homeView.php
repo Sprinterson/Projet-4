@@ -19,13 +19,16 @@
             <div class="news">
                 <h2>
                     <a href="index.php?action=post&amp;id=<?= $data->id() ?>"><?= htmlspecialchars($data->title()) ?></a>
+                    <br/>
                     <em>le <?= $data->creation_date_fr() ?></em>
                 </h2>
-                
+                <br/>
                 <p>
                     <?= nl2br(htmlspecialchars($data->content()))?>
                     <br/>
+                    <br/>
                     <a href="index.php?action=post&amp;id=<?= $data->id() ?>" class="comments-link">Commentaires</a>
+                    <br/>
                 </p>
             </div>
         <?php

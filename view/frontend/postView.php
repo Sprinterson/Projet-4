@@ -12,12 +12,14 @@
     <div class="news">
         <h2>
             <?= htmlspecialchars($data->title()) ?>
+            <br/>
             <em>le <?= $data->creation_date_fr() ?></em>
         </h2>
-        
+        <br/>
         <p>
             <?= nl2br(htmlspecialchars($data->content())) ?>
         </p>
+        <br/>
     </div>
     <?php
     }
@@ -49,7 +51,7 @@
             <textarea id="comment" name="comment"></textarea>
         </div>
         <div>
-            <input type="submit" />
+            <input class="submit-button" type="submit" value="Soumettre" />
         </div>
     </form>
     

@@ -25,7 +25,7 @@ if (session_status() == PHP_SESSION_ACTIVE){
             <input type="password" id="password" name="password" />
         </div>
         <div>
-            <input type="submit" value="login" />
+            <input class="submit-button" type="submit" value="S'identifier" />
         </div>
     </form>
 
