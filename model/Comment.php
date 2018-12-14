@@ -10,6 +10,7 @@ class Comment
     private $_author;
     private $_comment;
     private $_comment_date_fr;
+    private $_signals;
 
 
  // Hydratation
@@ -43,7 +44,10 @@ class Comment
 
     public function comment_date_fr(){ 
         return $this->_comment_date_fr;
-        var_dump($comment_date_fr);
+    }
+
+    public function signals(){ 
+        return $this->_signals; 
     }
 
 
@@ -70,7 +74,11 @@ class Comment
 
     public function setComment_Date_Fr($comment_date_fr){   
             $this->_comment_date_fr = $comment_date_fr;
-        }
+    }
+
+    public function setSignals($signals){
+        $this->_signals = (int) $signals;
+    }
         
 }
 

@@ -34,6 +34,10 @@
             <div class="comments-list">
                 <p><strong><?= htmlspecialchars($comments->author()) ?></strong> le <?= $comments->comment_date_fr() ?></p>
                 <p><?= nl2br(htmlspecialchars($comments->comment())) ?></p>
+                <br/>
+                <form action="index.php?action=signalComment&amp;id=<?= $comments->id() ?>" method="post" >
+                    <input class="signal-button" type="submit" value="Signaler le commentaire" />
+                </form>
             </div>
     <?php
         }
@@ -43,11 +47,11 @@
 
     <form action="index.php?action=addComment&amp;id=<?= $data->id() ?>" method="post">
         <div>
-            <label for="author">Auteur</label><br />
+            <label for="author">Auteur</label><br/>
             <input type="text" id="author" name="author" />
         </div>
         <div>
-            <label for="comment">Commentaire</label><br />
+            <label for="comment">Commentaire</label><br/>
             <textarea id="comment" name="comment"></textarea>
         </div>
         <div>

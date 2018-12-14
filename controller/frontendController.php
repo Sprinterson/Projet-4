@@ -44,16 +44,28 @@ class FrontEndController
     // Fonctionnalité d'ajout de commentaires
     function addComment($postId, $author, $comment)
     {
+        $postId = $_GET['id'];
+        var_dump($postId);
+        header('Location:index.php?action=post&id='.$postId);
         $commentsManager = new \OpenClassrooms\Projet4\Model\CommentsManager();
         $affectedLines = $commentsManager->postComment($postId, $author, $comment);
+
 
         if ($affectedLines === false) {
             throw new Exception('Impossible d\'ajouter le commentaire !');
             header('Location: index.php?action=errorView');
         }
         else {
-            header('Location:index.php?action=listPostsView.php');
+            header('Location:index.php?action=post&id=<?= $postId ?>');
         }
+    }
+
+    // Fonctionnalité pour signaler un commentaire
+    function signalComment()
+    {
+        $commentsManager = new \OpenClassrooms\Projet4\Model\CommentsManager();
+        $commentsManager->signalComment();
+        header('Location:index.php?action=listPosts');
     }
 
     // ERROR VIEW ======================================================================================

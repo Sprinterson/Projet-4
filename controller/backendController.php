@@ -52,15 +52,14 @@ class BackEndController
 
     // Chargement de la fonction d'ajout de l'article
     function addPost($title, $content){
+        header('Location:index.php?action=postsBoardView');
         $postsManager = new \OpenClassrooms\Projet4\Model\PostsManager();
         $affectedLines = $postsManager->addPost($title, $content);
+        
 
-        /*if ($affectedLines === false){
-            throw new Exception('Impossible d\'ajouter l'article !');
+        if ($affectedLines === false){
+            throw new Exception('Impossible d\'ajouter l\'article !');
         }
-        else {*/
-            header('Location:http://localhost/Projet-4/index.php?action=adminView');
-        //}
     }
 
       // Chargement de la page de modification de l'article
@@ -72,16 +71,16 @@ class BackEndController
 
     // Chargement de la fonction de modification de l'article
     function modifyPost($title, $content){
+        header('Location:index.php?action=postsBoardView');
         $postsManager = new \OpenClassrooms\Projet4\Model\PostsManager(); 
         $postsManager->modifyPost($title, $content);
-        header('Location:http://localhost/Projet-4/index.php?action=adminView');
     }
 
     // Chargement de la fonction de suppression de billet
     function deletePost(){
         $postsManager = new \OpenClassrooms\Projet4\Model\PostsManager(); 
         $postsManager->deletePost(); 
-        header('Location:http://localhost/Projet-4/index.php?action=adminView');
+        header('Location:index.php?action=postsBoardView');
     }
 
     // COMMENTS BOARD VIEW ===================================================================================
@@ -102,16 +101,16 @@ class BackEndController
 
     // Chargement de la fonction de modification de commentaire
     function modifyComment($comment){
+        header('Location:index.php?action=commentsBoardView');
         $commentsManager = new \OpenClassrooms\Projet4\Model\CommentsManager(); 
         $commentsManager->modifyComment($comment);
-        header('Location:http://localhost/Projet-4/index.php?action=adminView');
     }
 
     // Chargement de la fonction de suppression de commentaire
     function deleteComment(){
         $commentsManager = new \OpenClassrooms\Projet4\Model\CommentsManager(); 
         $commentsManager->deleteComment(); 
-        header('Location:http://localhost/Projet-4/index.php?action=adminView');
+        header('Location:index.php?action=commentsBoardView');
     }
 
     // CHECK LOGIN =====================================================================================

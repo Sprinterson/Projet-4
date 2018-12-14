@@ -148,7 +148,7 @@ try {
                 $frontendManager = new \OpenClassrooms\Projet4\Controller\FrontEndController();
                 $frontendManager->post();
             }
-            else {
+            else{
                 throw new Exception('Aucun identifiant de billet envoyé');
                 $backendManager = new \OpenClassrooms\Projet4\Controller\BackEndController();
                 $backendManager->errorView();
@@ -163,22 +163,27 @@ try {
                     $frontendManager = new \OpenClassrooms\Projet4\Controller\FrontEndController();
                     $frontendManager->addComment($_GET['id'], $_POST['author'], $_POST['comment']);
                 }
-                else {
+                else{
                     throw new Exception('Tous les champs ne sont pas remplis !');
                 }
             }
-            else {
+            else{
                 throw new Exception('Aucun identifiant de commentaire envoyé');
             }
+        }
+
+        elseif ($_GET['action'] == 'signalComment'){
+            $frontendManager = new \OpenClassrooms\Projet4\Controller\FrontEndController();
+            $frontendManager->signalComment();
         }
     }
 
     // HOME VIEW ===========================================================================================
 
     // Nom de la page d'accueil sur laquelle on est directement redirigé sur l'URL ne contient aucun paramètre.
-    else {
+    else{
         $frontendManager = new \OpenClassrooms\Projet4\Controller\FrontEndController();
-        $frontendManager->homeView(); 
+        $frontendManager->homeView();
     }
 }
 

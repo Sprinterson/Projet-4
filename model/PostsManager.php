@@ -14,11 +14,9 @@ class PostsManager
         $req = $db->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%i\') AS creation_date_fr FROM posts ORDER BY creation_date DESC LIMIT 0, 100');
         // La requête retournée est transformée en tableau 
         $req->execute(array());
-
         while ($data = $req->fetch($db::FETCH_ASSOC)){
            $posts[]  = new \OpenClassrooms\Projet4\Model\Post($data); // On instancie le tableau en nouvel objet 
         };
-
         // l'objet est retourné en résultat
         return $posts;
     }
@@ -28,26 +26,21 @@ class PostsManager
         $db = \OpenClassrooms\Projet4\Model\Database::dbConnect();
         $req = $db->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%i\') AS creation_date_fr FROM posts ORDER BY creation_date DESC LIMIT 0, 1');
         $req->execute(array());
-
         while ($data = $req->fetch($db::FETCH_ASSOC)){
            $posts[]  = new \OpenClassrooms\Projet4\Model\Post($data); 
         };
-
         return $posts;
     }
 
 
     public function getPost($postId){
         $posts=[];
-
         $db = \OpenClassrooms\Projet4\Model\Database::dbConnect();
         $req = $db->prepare('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%i\') AS creation_date_fr FROM posts WHERE id = ?');
         $req->execute(array($postId));
-
         while ($data = $req->fetch($db::FETCH_ASSOC)){
            $posts[]  = new \OpenClassrooms\Projet4\Model\Post($data);
         };
-
         return $posts;
     }
 
@@ -60,7 +53,6 @@ class PostsManager
         while ($data = $req->fetch($db::FETCH_ASSOC)){
            $newpost[]  = new \OpenClassrooms\Projet4\Model\Post($data);
         };
-
         return $newpost;
     }
 
@@ -73,7 +65,6 @@ class PostsManager
         while ($data = $req->fetch($db::FETCH_ASSOC)){
            $modifiedPost[]  = new \OpenClassrooms\Projet4\Model\Post($data);
         };
-
         return $modifiedPost;
     }
 
