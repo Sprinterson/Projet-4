@@ -21,7 +21,6 @@ try {
         elseif ($_GET['action'] == 'adminLogin'){
             $backendManager = new \OpenClassrooms\Projet4\Controller\BackEndController();
             $backendManager->adminLogin();
-            $backendManager->checkLogin();
         }
 
         // ADMIN VIEW ==================================================================================
@@ -30,7 +29,27 @@ try {
         elseif ($_GET['action'] == 'adminView'){
             $backendManager = new \OpenClassrooms\Projet4\Controller\BackEndController();
             $backendManager->adminView();
-            $backendManager->checkLogin();
+        }
+
+        // Modifie l'email de l'administrateur
+        elseif ($_GET['action'] == 'modifyEmail'){
+            $backendManager = new \OpenClassrooms\Projet4\Controller\BackEndController();
+            $backendManager->modifyEmail($_POST['modify-email']);
+        }
+
+        // Modifie le mot de passe de l'administrateur
+        elseif ($_GET['action'] == 'newPassword'){     
+            $actualPassword = $_POST['actual-password'];
+            $oldPassword = $_POST['old-password'];
+
+            if ($actualPassword != $oldPassword) {
+                throw new Exception('Mauvais mot de passe');
+            }
+            else{
+                var_dump($actualPassword);
+                $backendManager = new \OpenClassrooms\Projet4\Controller\BackEndController();
+                $backendManager->modifyPassword($_POST['new-password']);
+            }
         }
 
         // ADMIN LOGOUT ====================================================================================
@@ -46,8 +65,7 @@ try {
         // Redirige sur la page de gestion des articles
         elseif ($_GET['action'] == 'postsBoardView'){ 
             $backendManager = new \OpenClassrooms\Projet4\Controller\BackEndController();
-            $backendManager->postsBoardView();
-            $backendManager->checkLogin();      
+            $backendManager->postsBoardView();   
         }
 
         // Création d'un nouvel article
@@ -66,7 +84,6 @@ try {
             if (isset($_GET['id']) && $_GET['id'] > 0){
                 $backendManager = new \OpenClassrooms\Projet4\Controller\BackEndController();
                 $backendManager->modifyPostView();
-                $backendManager->checkLogin();
             }
             else {
                 throw new Exception('Aucun identifiant d\'article envoyé');
@@ -98,7 +115,6 @@ try {
         elseif ($_GET['action'] == 'commentsBoardView'){
             $backendManager = new \OpenClassrooms\Projet4\Controller\BackEndController();
             $backendManager->commentsBoardView();
-            $backendManager->checkLogin();
         }
 
         // Redirige sur la page de modification d'un commentaire
@@ -106,7 +122,6 @@ try {
             if (isset($_GET['id']) && $_GET['id'] > 0){
                 $backendManager = new \OpenClassrooms\Projet4\Controller\BackEndController();
                 $backendManager->modifyCommentView();
-                $backendManager->checkLogin();
             }
             else {
                 throw new Exception('Aucun identifiant de commentaire envoyé');

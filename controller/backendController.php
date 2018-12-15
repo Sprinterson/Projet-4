@@ -41,6 +41,20 @@ class BackEndController
         require('view/backend/adminLogout.php');
     }
 
+    // Fonction de modification de l'email de l'administrateur
+    function modifyEmail($email){
+        header('Location:index.php?action=adminView');
+        $usersManager = new \OpenClassrooms\Projet4\Model\UsersManager();
+        $usersManager->modifyEmail($email);
+    }
+
+    // Fonction de modification du mot de passe de l'administrateur
+    function modifyPassword($password){
+        header('Location:index.php?action=adminView');
+        $usersManager = new \OpenClassrooms\Projet4\Model\UsersManager();
+        $usersManager->modifyPassword($password);
+    }
+
     // POSTS BOARD VIEW =================================================================================
 
     // Chargement de la page de gestion des articles
@@ -111,20 +125,6 @@ class BackEndController
         $commentsManager = new \OpenClassrooms\Projet4\Model\CommentsManager(); 
         $commentsManager->deleteComment(); 
         header('Location:index.php?action=commentsBoardView');
-    }
-
-    // CHECK LOGIN =====================================================================================
-
-    // Fonction de vérification des paramètres de connection sur les pages membres
-    function checkLogin(){
-        if (session_status() == PHP_SESSION_ACTIVE){
-            echo 'Session is active';
-            if (!empty($_SESSION['pseudo']) && !empty($_SESSION['password'])){
-            }
-            else{
-                header('Location:http://localhost/Projet-4/index.php');
-            };
-        };    
     }
 }
 

@@ -45,7 +45,6 @@ class FrontEndController
     function addComment($postId, $author, $comment)
     {
         $postId = $_GET['id'];
-        var_dump($postId);
         header('Location:index.php?action=post&id='.$postId);
         $commentsManager = new \OpenClassrooms\Projet4\Model\CommentsManager();
         $affectedLines = $commentsManager->postComment($postId, $author, $comment);
@@ -63,9 +62,10 @@ class FrontEndController
     // Fonctionnalité pour signaler un commentaire
     function signalComment()
     {
+        $postId = $_GET['id'];
+        header('Location:index.php?action=post&id='.$postId);
         $commentsManager = new \OpenClassrooms\Projet4\Model\CommentsManager();
         $commentsManager->signalComment();
-        header('Location:index.php?action=listPosts');
     }
 
     // ERROR VIEW ======================================================================================

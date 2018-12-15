@@ -1,8 +1,10 @@
 <?php 
 session_start();
-
 $title = 'Modifier un commentaire'; 
-
+if (empty($_SESSION['pseudo']) && empty($_SESSION['password'])){
+                echo 'Session connectée';
+                header('Location:index.php?action=adminAccess');
+}
 ob_start(); ?>
 
 <section class="new-post">

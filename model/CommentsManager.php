@@ -58,7 +58,7 @@ class CommentsManager
     }
 
     public function signalComment(){
-        $id= (int) $_GET['id'];
+        $id= (int) $_POST['signal_id'];
         var_dump($id);
         $db = \OpenClassrooms\Projet4\Model\Database::dbConnect();
         $req = $db->prepare('UPDATE comments SET signals = signals + 1 WHERE id=?');

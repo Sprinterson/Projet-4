@@ -1,9 +1,11 @@
 <?php 
 session_start();
-
-$title = 'Gérer les commentaires'; ?>
-
-<?php ob_start(); ?>
+$title = 'Gérer les commentaires';
+if (empty($_SESSION['pseudo']) && empty($_SESSION['password'])){
+                echo 'Session connectée';
+                header('Location:index.php?action=adminAccess');
+}
+ob_start(); ?>
 
 <section id="comments-view">
 	<h1>Gérer les commentaires</h1>	

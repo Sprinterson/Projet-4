@@ -6,7 +6,7 @@ session_start();
 if (session_status() == PHP_SESSION_ACTIVE){
             echo 'Session is active';
             if (!empty($_SESSION['pseudo']) && !empty($_SESSION['password'])){
-                header('Location:http://localhost/Projet-4/index.php?action=adminView');
+                header('Location:index.php?action=adminView');
             }
 };    
 

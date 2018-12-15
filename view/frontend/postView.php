@@ -1,4 +1,6 @@
-<?php $title = 'Le blog de Jean Forteroche'; ?>
+<?php $title = 'Le blog de Jean Forteroche'; 
+
+?>
 
 <?php ob_start(); ?>
 
@@ -30,17 +32,21 @@
     <?php
         foreach ($comments as $comments)
         {
+            
     ?>
             <div class="comments-list">
                 <p><strong><?= htmlspecialchars($comments->author()) ?></strong> le <?= $comments->comment_date_fr() ?></p>
                 <p><?= nl2br(htmlspecialchars($comments->comment())) ?></p>
                 <br/>
-                <form action="index.php?action=signalComment&amp;id=<?= $comments->id() ?>" method="post" >
+                <form action="index.php?action=signalComment&amp;id=<?= $data->id() ?>" method="post" >
+                    <input type="hidden" name="signal_id" value="<?= $comments->id() ?>"/>
                     <input class="signal-button" type="submit" value="Signaler le commentaire" />
                 </form>
             </div>
     <?php
         }
+        foreach ($posts as $data)
+        {
     ?>
 
     <h2 class="comments">Ajouter un commentaire</h2>
@@ -58,6 +64,10 @@
             <input class="submit-button" type="submit" value="Soumettre" />
         </div>
     </form>
+
+    <?php
+        }
+    ?>
     
 </section>
 

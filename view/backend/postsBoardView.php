@@ -1,9 +1,11 @@
 <?php 
 session_start();
-
-$title = 'Gestion des articles'; ?>
-
-<?php ob_start(); ?>
+$title = 'Gestion des articles';
+if (empty($_SESSION['pseudo']) && empty($_SESSION['password'])){
+                echo 'Session connectée';
+                header('Location:index.php?action=adminAccess');
+}
+ob_start(); ?>
 
 <section class="new-post">
     <br>
