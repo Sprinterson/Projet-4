@@ -38,17 +38,21 @@ try {
         }
 
         // Modifie le mot de passe de l'administrateur
-        elseif ($_GET['action'] == 'newPassword'){     
-            $actualPassword = $_POST['actual-password'];
-            $oldPassword = $_POST['old-password'];
+        elseif ($_GET['action'] == 'newPassword'){ 
 
-            if ($actualPassword != $oldPassword) {
-                throw new Exception('Mauvais mot de passe');
+            $backendManager = new \OpenClassrooms\Projet4\Controller\BackEndController();
+            $password = $backendManager->getLogin();
+            var_dump($password);
+
+            $oldPassword = $_POST['old-password'];
+            $newPassword = $_POST['new-password'];
+
+            if ($password == $oldPassword){
+                
+                $backendManager->modifyPassword($newPassword);
             }
             else{
-                var_dump($actualPassword);
-                $backendManager = new \OpenClassrooms\Projet4\Controller\BackEndController();
-                $backendManager->modifyPassword($_POST['new-password']);
+                throw new Exception("Mauvais mot de passe");
             }
         }
 

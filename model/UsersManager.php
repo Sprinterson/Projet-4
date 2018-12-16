@@ -28,10 +28,11 @@ class UsersManager
         $req->execute(array($eMail));
     }
 
-    public function modifyPassword($password){
+    public function modifyPassword($newPassword){
         $password= $_POST['new-password'];
+        $hash = password_hash($password, PASSWORD_DEFAULT);
         $db = \OpenClassrooms\Projet4\Model\Database::dbConnect();
         $req = $db->prepare('UPDATE users SET password=?');
-        $req->execute(array($password));
+        $req->execute(array($hash));
     }
 }

@@ -26,6 +26,16 @@ class BackEndController
         require('view/backend/adminLogin.php');
     }
 
+    // Chargement de la page vérifiant les identifiants de connexion
+    function getLogin(){
+        $usersManager = new \OpenClassrooms\Projet4\Model\UsersManager();
+        $login = $usersManager->getLogin();
+        $pseudo = $login->pseudo();
+        $password = $login->password();
+
+        return $password;
+    }    
+
     // ADMIN VIEW ======================================================================================
 
     // Chargement du tableau de bord d'administration
@@ -33,6 +43,7 @@ class BackEndController
         $usersManager = new \OpenClassrooms\Projet4\Model\UsersManager();
         $login = $usersManager->getLogin();
         $email = $login->email();
+        $password = $login->password();
         require('view/backend/adminView.php');
     }
 
@@ -49,10 +60,10 @@ class BackEndController
     }
 
     // Fonction de modification du mot de passe de l'administrateur
-    function modifyPassword($password){
+    function modifyPassword($newPassword){
         header('Location:index.php?action=adminView');
         $usersManager = new \OpenClassrooms\Projet4\Model\UsersManager();
-        $usersManager->modifyPassword($password);
+        $usersManager->modifyPassword($newPassword);
     }
 
     // POSTS BOARD VIEW =================================================================================

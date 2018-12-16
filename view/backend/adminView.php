@@ -6,8 +6,6 @@ if (empty($_SESSION['pseudo']) && empty($_SESSION['password'])){
                 echo 'Session connectée';
                 header('Location:index.php?action=adminAccess');
 }
-$password = $_SESSION['password'];
-var_dump($password);
 ob_start(); ?>
 
 <section id="admin-view">
@@ -36,9 +34,8 @@ ob_start(); ?>
 	        <input class="submit-button" type="submit" value="Modifier"/>
 	    </form>
 		<form method="post" action="index.php?action=newPassword">
-			<input type="hidden" name="actual-password" value="<?php print $_SESSION['password'] ?>"/>
 			<label for="old-password">Mot de passe actuel</label><br/>
-	        <input type="password" name="old-password" value="..."/><br/>
+	        <input type="password" name="old-password" /><br/>
 	        <br/>
 	        <label for="new-password">Nouveau mot de passe</label><br/>
 	        <input type="password" name="new-password" required /><br/>
@@ -51,6 +48,4 @@ ob_start(); ?>
 <?php
 
 $content = ob_get_clean(); 
-?>
-
-<?php require('template.php'); ?>
+ require('template.php'); ?>
