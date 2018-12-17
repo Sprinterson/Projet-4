@@ -88,6 +88,8 @@ em
 input
 {
 	font-family: 'open_sansregular', sans-serif;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+	border: 1px solid #c5c5c5;
 }
 
 textarea
@@ -181,7 +183,28 @@ nav li:hover
 
 @media all and (max-width: 720px)/*=========================*/
 {
+	header h1 
+	{
+	    margin-top: 16px;
+	    left: 12px;
+	    font-size: 1em;
+	}
 
+	nav
+	{
+		margin-top: 0px;
+		font-size: 1em;
+	}
+
+	nav li 
+	{
+    	margin-right: 10px;
+	}
+
+	nav li:hover
+	{
+	    margin-right: 5px;
+	}
 }
 
 @media all and (max-width: 480px)/*=========================*/
@@ -217,19 +240,75 @@ nav li:hover
 	text-shadow: 1px 1px 2px black; 
 }
 
+#last-article
+{
+	position: relative;
+	width: 90%;
+	left: 5%;
+	padding-bottom: 100px;
+
+	background-color: #F0F0F0;
+	color: black;
+}
+
+#last-article-title
+{
+	position: relative;
+	top: 10px;
+	left: 20px;
+	margin: 0px;
+}
+
+#last-article a
+{
+	font-family: 'caviar_dreamsregular';
+}
+
 @media all and (max-width: 1366px)/*=========================*/
 {
+	#homepage
+	{
+		height: 390px;
+	}
 
+	#last-article
+	{
+		padding-bottom: 22px;
+	}
 }
 
 @media all and (max-width: 1024px)/*=========================*/
 {
+	#homepage
+	{
+		height: 278px;
+	}
 
+	#homepage h1
+	{
+		top: 100px;
+		width: auto;
+	}
 }
 
 @media all and (max-width: 720px)/*=========================*/
 {
-	
+	#homepage
+	{
+		height: 185px;
+	}
+
+	#homepage h1
+	{
+		top: 40px;
+		font-size: 2em;
+	}
+
+	#last-article .news
+	{
+		border-radius: 0px;
+		width: auto;
+	}
 }
 
 @media all and (max-width: 480px)/*=========================*/
@@ -271,54 +350,7 @@ footer
 
 }
 
-/*=== LAST-ARTICLE ============================================================================================================*/
-
-#last-article
-{
-	position: relative;
-	width: 90%;
-	left: 5%;
-	padding-bottom: 100px;
-
-	background-color: #F0F0F0;
-	color: black;
-}
-
-#last-article-title
-{
-	position: relative;
-	top: 10px;
-	left: 20px;
-	margin: 0px;
-}
-
-#last-article a
-{
-	font-family: 'caviar_dreamsregular';
-}
-
-@media all and (max-width: 1366px)/*=========================*/
-{
-
-}
-
-@media all and (max-width: 1024px)/*=========================*/
-{
-
-}
-
-@media all and (max-width: 720px)/*=========================*/
-{
-	
-}
-
-@media all and (max-width: 480px)/*=========================*/
-{
-
-}
-
 /*=== LIST-POSTS ==============================================================================================================*/
-
 
 #list-posts
 {
@@ -386,17 +418,39 @@ footer
 
 @media all and (max-width: 1366px)/*=========================*/
 {
-
+	#list-posts
+	{
+		margin-bottom: 100px;
+	}
 }
 
 @media all and (max-width: 1024px)/*=========================*/
 {
-
+	#list-posts-banner h1 
+	{
+    	bottom: -115px;
+    }
 }
 
 @media all and (max-width: 720px)/*=========================*/
 {
-	
+
+	#list-posts-banner 
+	{
+    height: 100px;
+	}
+
+	#list-posts-banner h1 
+	{
+	    bottom: -15px;
+	    font-size: 2em;
+	}
+
+	#list-posts .news
+	{
+		border-radius: 0px;
+		width: auto;
+	}
 }
 
 @media all and (max-width: 480px)/*=========================*/
@@ -434,7 +488,7 @@ footer
 #posts form
 {
 	position: relative;
-	width: 28%;
+	width: 450px;
 	margin: auto;
 	margin-left: 100px;
 	margin-bottom: 10px;
@@ -493,17 +547,53 @@ footer
 
 @media all and (max-width: 1366px)/*=========================*/
 {
-
+	#posts
+	{
+		margin-bottom: 100px;
+	}
 }
 
 @media all and (max-width: 1024px)/*=========================*/
 {
+	.comments 
+	{
+    	margin-left: 15px;
+  	}
 
+  	.comments-list
+  	{
+    	margin-left: 35px;
+	}
+
+	#posts .comments-list form 
+	{
+	    width: 250px;
+	}
+
+	.add-comment
+	{
+		margin-left: 35px;
+	}
 }
 
 @media all and (max-width: 720px)/*=========================*/
 {
-	
+	#posts
+	{
+		width: 94%;
+		left: 4px;
+	}
+
+	#posts .comments-list form 
+	{
+	    width: 100px;
+	}
+
+	#posts .add-comment
+	{
+ 		width: 85%;
+		margin-left: 30px;
+    }
 }
 
 @media all and (max-width: 480px)/*=========================*/
@@ -582,8 +672,6 @@ footer
 
 }
 
-
-
 /*=== ADMIN VIEW ==================================================================================================================*/
 
 #admin-view
@@ -628,11 +716,26 @@ footer
 #admin-view .submit-button
 {
 	margin-top: 10px;
+	width: 65px;
 }
+
+#admin-view form
+{
+	margin-bottom: 15px;
+}
+
+#admin-view input
+{
+	width: 200px;
+}
+
 
 @media all and (max-width: 1366px)/*=========================*/
 {
-
+	#admin-view
+	{
+		width: 600px;
+	}
 }
 
 @media all and (max-width: 1024px)/*=========================*/
@@ -642,7 +745,13 @@ footer
 
 @media all and (max-width: 720px)/*=========================*/
 {
-	
+	#admin-view 
+	{
+    	width: 481px;
+    	justify-content: space-evenly;
+    	font-size: 0.8em;
+    	border-radius: 0px;
+	}
 }
 
 @media all and (max-width: 480px)/*=========================*/
@@ -655,7 +764,7 @@ footer
 .new-post
 {
 	position: relative;
-	height: 600px;
+	height: 700px;
 	width: 90%;
 	left: 5%;
 	margin-top: 100px;
@@ -664,6 +773,7 @@ footer
 	background-color: white;
 	color: black;
 	border-radius: 10px;
+
 }
 
 .bta-newPost.backtoAdmin
@@ -687,7 +797,7 @@ footer
 .new-post form
 {
 	position: relative;
-	width: 50%;
+	width: 75%;
 	margin: auto;
 	margin-left: 100px;
 	margin-bottom: 10px;
@@ -699,14 +809,14 @@ footer
 	border-radius: 10px;
 }
 
+.new-post .title
+{
+	width: 300px;
+}
+
 .new-post form div
 {
 	margin-bottom: 10px;
-}
-
-.title
-{
-	width: 400px;
 }
 
 .new-post textarea
@@ -715,7 +825,7 @@ footer
 	width: 800px;
 }
 
-#delete-post
+#manage-post
 {
 	position: relative;
 	margin-top: 50px;
@@ -730,7 +840,7 @@ footer
 	border-radius: 10px 10px 0px 0px;
 }
 
-#delete-post h1
+#manage-post h1
 {
 	position: relative;
 	margin-bottom: 50px;
@@ -758,17 +868,24 @@ footer
 	font-size: 1em;
 }
 
-#delete-post .news
+#manage-post .news
 {
 	display: flex;
 	flex-direction: row;
+	width: auto;
 	padding: 0px 0px 0px 10px;
-	display: flex;
 }
 
 .content-post
 {
-	width: 86%;
+	width: 100%;
+	display: flex;
+	align-items: stretch;
+}
+
+.content-post h2
+{
+	width: 1000px;
 }
 
 .content-post h2 a
@@ -776,40 +893,93 @@ footer
 	font-family: 'caviar_dreamsregular';
 }
 
-#delete-post .content-modify
+#manage-post .content-delete
 {
-	width: 7%;
-}
-
-#delete-post .content-delete
-{
-	width: 7%;
 	text-align: center;
 }
 
 
-#delete-post .news input
+#manage-post .news input
 {
 	background-color: transparent;
 	color: white;
 	border-style: none;
+	box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+	border: 0 solid #c5c5c5;
 	font-family: 'open_sansregular', sans-serif;
 	font-size: 1em;
 }
 
 @media all and (max-width: 1366px)/*=========================*/
 {
+	#manage-post
+	{
+		margin-bottom: 100px;
+	}
 
+	#manage-post
+	{
+		margin-bottom: 100px;
+	}
+
+	.content-post h2
+	{
+		width: 700px;
+	}
 }
 
 @media all and (max-width: 1024px)/*=========================*/
 {
-
+	#manage-post .news
+	{
+		width: 600px;
+	}
 }
 
 @media all and (max-width: 720px)/*=========================*/
 {
-	
+	.new-post
+	{
+		width: 100%;
+		left: 0;
+		border-radius: 0px;
+	}
+
+	.new-post form 
+	{
+    	width: 95%;
+    	margin-left: 0%;
+	}
+
+	.new-post h1
+	{
+		width: 275px;
+	}
+
+	#manage-post
+	{
+		width: 100%;
+		left: 0;
+		border-radius: 0px;
+	}
+
+	#manage-post h1
+	{
+		width: 275px;
+	}
+
+	#manage-post .news 
+	{
+	    width: 470px;
+	    left: 0;
+	    font-size: 0.9em;
+	    border-radius: 0;
+	}
+
+	#manage-post .content-delete 
+	{
+	    border-radius: 0;
+	}
 }
 
 @media all and (max-width: 480px)/*=========================*/
@@ -900,13 +1070,16 @@ footer
 	border-style: none;
 	font-family: 'open_sansregular', sans-serif;
 	font-size: 1em;
+	box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+	border: 0 solid #c5c5c5;
 }
 
 .content-modify
 {
 	position: relative;
 	left: 0px;
-	padding: 0 10px;
+	height: 100%;
+	padding: 0;
 	text-align: center;
 	
 	background-color: #8b9291;
@@ -915,14 +1088,15 @@ footer
 .content-modify #modify
 {
 	position: relative;
-	bottom: -17px;
+	bottom: -30%;
 }
 
 .content-delete
 {
 	position: relative;
 	left: 0px;
-	padding: 0 10px;
+	height: 100%;
+	padding: 0;
 	text-align: center;
 	
 	background-color: #173035;
@@ -932,7 +1106,7 @@ footer
 .content-delete #delete
 {
 	position: relative;
-	bottom: -17px;
+	bottom: -30%;
 
 	color: white;
 }
@@ -945,12 +1119,29 @@ footer
 
 @media all and (max-width: 1024px)/*=========================*/
 {
+	#comments-view .news
+	{
+		font-size: 0.8em;
+	}
 
+	.comment-author
+	{
+		max-width: 100px;
+	}
+
+	.comment-content
+	{
+		width: 400px;
+		min-width: 0;
+	}
 }
 
 @media all and (max-width: 720px)/*=========================*/
 {
-	
+	#comments-view h1
+	{
+		width: 275px;
+	}
 }
 
 @media all and (max-width: 480px)/*=========================*/

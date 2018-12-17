@@ -71,10 +71,12 @@ class CommentsManager
         $db = \OpenClassrooms\Projet4\Model\Database::dbConnect();
         $req = $db->prepare('UPDATE comments SET comment=? WHERE id=?');
         $req->execute(array($comment, $id));
+        $data = $req->fetch($db::FETCH_ASSOC);
         while ($data = $req->fetch($db::FETCH_ASSOC)){
-           $modifiedComment[]  = new \OpenClassrooms\Projet4\Model\Comment($data);
+           $modifiedComment[]  = new \OpenClassrooms\Projet4\Model\Post($data);
         };
         return $modifiedComment;
+        var_dump($modifiedComment);
     }
 
     public function deleteComment(){
@@ -85,3 +87,4 @@ class CommentsManager
         $q->execute(array($id));
     }
 }
+

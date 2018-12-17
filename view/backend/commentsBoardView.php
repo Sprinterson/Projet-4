@@ -15,8 +15,8 @@ ob_start(); ?>
     <?php
         foreach ($comments as $data){
             $id = (int) $data->id();
-            $author = $data->author();
-            $comment = $data->comment();
+            $author = substr($data->author(),0, 20);
+            $comment = substr($data->comment(),0, 50);
             $signals = (int) $data->signals();
         ?>
             <div class="news">

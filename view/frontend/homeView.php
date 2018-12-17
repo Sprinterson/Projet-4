@@ -24,7 +24,7 @@
                 </h2>
                 <br/>
                 <p>
-                    <?= nl2br(htmlspecialchars($data->content()))?>
+                    <?= htmlspecialchars($data->content())?>
                     <br/>
                     <br/>
                     <a href="index.php?action=post&amp;id=<?= $data->id() ?>" class="comments-link">Commentaires</a>

@@ -7,16 +7,17 @@ use \PDO;
 abstract class Database
 {
 
-    const DB_HOST = 'localhost';
-    const DB_NAME = 'test';
-    const DB_USER = 'root';
-    const DB_PASS = '';
+    const DB_HOST = 'db766157077.hosting-data.io';
+    const DB_PORT = '3306';
+    const DB_NAME = 'db766157077';
+    const DB_USER = 'dbo766157077';
+    const DB_PASS = 'Tigre3019$';
 
     private static $db;
 
     public static function dbConnect() {
         if (self::$db === null){
-            $db = new PDO('mysql:host=' . self::DB_HOST . ';dbname=' . self::DB_NAME . ';charset=utf8', self::DB_USER, self::DB_PASS);
+            $db = new PDO('mysql:host=' . self::DB_HOST . ';port=' . self::DB_PORT . ';dbname=' . self::DB_NAME . ';charset=utf8', self::DB_USER, self::DB_PASS);
 
             $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 

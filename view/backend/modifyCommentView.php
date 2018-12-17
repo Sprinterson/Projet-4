@@ -4,22 +4,25 @@ $title = 'Modifier un commentaire';
 if (empty($_SESSION['pseudo']) && empty($_SESSION['password'])){
                 echo 'Session connectée';
                 header('Location:index.php?action=adminAccess');
-}
+};
+if(isset($_GET['id'])) {
+    $id = $_GET['id'];
+};
 ob_start(); ?>
 
 <section class="new-post">
-    <?php
-        foreach ($comments as $data){
-            $id = (int) $data->id();
-    ?>
+
 
     <br>
     <h1>Modifier un commentaire</h1>
 
-    <form action="index.php?action=modifyComment&amp;>" method="post">
+    <form action="index.php?action=modifyComment" method="post">
+        <?php
+            foreach ($comments as $comments){
+        ?>
         <div>
             <label for="comment">Commentaire</label><br />
-            <textarea class="comment" name="comment"><?= nl2br(htmlspecialchars($data->comment())) ?></textarea>
+            <textarea class="comment" name="comment" required><?= nl2br(htmlspecialchars($comments->comment())) ?></textarea>
         </div>
         <div>
             <input type="hidden" name="modified_id" value="<?php print $id ?>"/>

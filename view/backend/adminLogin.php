@@ -21,7 +21,7 @@ if (isset($_POST['pseudo']) && isset($_POST['password'])) {
 		// Le visiteur n'a pas été reconnu comme étant membre de notre site. On utilise alors un petit javascript lui signalant ce fait
 		echo '<body onLoad="alert(\'Membre non reconnu...\')">';
 		// puis on le redirige vers la page d'accueil
-		echo '<meta http-equiv="refresh" content="0;URL=http://localhost/Projet-4/index.php?action=adminAccess">';
+		echo '<meta http-equiv="refresh" content="0;URL=https://projet-4.gordia.fr/index.php?action=adminAccess	">';
 	}
 }
 else {

@@ -137,8 +137,9 @@ try {
         // Modification d'un commentaire existant
         elseif ($_GET['action'] == 'modifyComment'){
             if (!empty($_POST['comment'])){
+                $comment = $_POST['comment'];
                 $backendManager = new \OpenClassrooms\Projet4\Controller\BackEndController();
-                $backendManager->modifyComment($_POST['comment']);
+                $backendManager->modifyComment($comment);
             }
             else{
                 throw new Exception('Tous les champs ne sont pas remplis !');

@@ -24,7 +24,7 @@ ob_start(); ?>
         
         <div>
             <label for="content">Article</label><br />
-            <textarea class="content" name="content"><?= htmlspecialchars($data->content()) ?></textarea>
+            <textarea class="content" name="content"><?= nl2br(htmlspecialchars($data->content())) ?></textarea>
         </div>
         <div>
             <input type="hidden" name="modified_id" value="<?php print $id ?>"/>

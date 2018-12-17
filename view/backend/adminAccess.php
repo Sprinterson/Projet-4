@@ -18,11 +18,11 @@ if (session_status() == PHP_SESSION_ACTIVE){
 	<form action="index.php?action=adminLogin" method="post">
         <div>
             <label for="pseudo">Pseudo</label><br />
-            <input type="text" id="pseudo" name="pseudo" />
+            <input type="text" id="pseudo" name="pseudo" required />
         </div>
         <div>
             <label for="password">Mot de Passe</label><br />
-            <input type="password" id="password" name="password" />
+            <input type="password" id="password" name="password" required />
         </div>
         <div>
             <input class="submit-button" type="submit" value="S'identifier" />

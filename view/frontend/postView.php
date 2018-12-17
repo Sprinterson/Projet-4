@@ -51,14 +51,14 @@
 
     <h2 class="comments">Ajouter un commentaire</h2>
 
-    <form action="index.php?action=addComment&amp;id=<?= $data->id() ?>" method="post">
+    <form class="add-comment" action="index.php?action=addComment&amp;id=<?= $data->id() ?>" method="post">
         <div>
             <label for="author">Auteur</label><br/>
-            <input type="text" id="author" name="author" />
+            <input type="text" id="author" name="author" required />
         </div>
         <div>
             <label for="comment">Commentaire</label><br/>
-            <textarea id="comment" name="comment"></textarea>
+            <textarea id="comment" name="comment" required ></textarea>
         </div>
         <div>
             <input class="submit-button" type="submit" value="Soumettre" />

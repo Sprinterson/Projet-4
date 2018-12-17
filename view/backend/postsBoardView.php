@@ -14,11 +14,11 @@ ob_start(); ?>
     <form action="index.php?action=newPost&amp;" method="post">
         <div>
             <label for="title">Titre</label><br />
-            <input type="text" class="title" name="title" />
+            <input type="text" class="title" name="title" required />
         </div>
         <div>
             <label for="content">Article</label><br />
-            <textarea id="content" name="content"></textarea>
+            <textarea id="content" name="content" required ></textarea>
         </div>
         <div>
             <input class="submit-button" type="submit" value="Soumettre" />
@@ -26,8 +26,8 @@ ob_start(); ?>
     </form>
 </section>
 
-<section id="delete-post">
-	<h1>Supprimer un article</h1>
+<section id="manage-post">
+	<h1>Gérer les articles</h1>
     
     <br/>
 
@@ -38,22 +38,22 @@ ob_start(); ?>
             <div class="news">
                 <div class="content-post">
                     <h2>
-                    <a href="index.php?action=post&amp;id=<?= $id ?>"><?= htmlspecialchars($data->title()) ?></a>
-                    <em>le <?= $data->creation_date_fr() ?></em>
-                </h2>
-                </div>
-                <div class="content-modify">
-                    <form id="modify" method="post" action="index.php?action=modifyPostView&amp;id=<?= $id ?>">
-                        <input type="hidden" name="modify_id" value="<?php print $id ?>"/>
-                        <input type="submit" name="modify" value="Modifier"/>
-                    </form>
-                </div>              
-                <div class="content-delete">
-                    <form id="delete" method="post" action="index.php?action=deletePost">
-                        <input type="hidden" name="delete_id" value="<?php print $id ?>"/>
-                        <input type="submit" name="delete" value="Supprimer"/>
-                    </form>
-                </div>
+                        <a href="index.php?action=post&amp;id=<?= $id ?>"><?= htmlspecialchars($data->title()) ?></a>
+                        <em>le <?= $data->creation_date_fr() ?></em>
+                    </h2>
+                    <div class="content-modify">
+                        <form id="modify" method="post" action="index.php?action=modifyPostView&amp;id=<?= $id ?>">
+                            <input type="hidden" name="modify_id" value="<?php print $id ?>"/>
+                            <input type="submit" name="modify" value="Modifier"/>
+                        </form>
+                    </div>
+                    <div class="content-delete">
+                        <form id="delete" method="post" action="index.php?action=deletePost">
+                            <input type="hidden" name="delete_id" value="<?php print $id ?>"/>
+                            <input type="submit" name="delete" value="Supprimer"/>
+                        </form>
+                    </div>
+                </div>        
             </div>
     <?php
         }
