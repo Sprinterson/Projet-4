@@ -219,12 +219,11 @@ nav li:hover
 	position: relative;
 	width: 90%;
 	left: 5%;
-	height: 500px;
+	height: 475px;
 	margin-top: 50px;
 	align-items: center;
 
-	background: url("../images/homepage-banner.png") no-repeat;
-	background-size: 100%;
+	background: url("../images/homepage-banner.png");
 }
 
 #homepage h1
@@ -261,7 +260,14 @@ nav li:hover
 
 #last-article a
 {
-	font-family: 'caviar_dreamsregular';
+	font-weight: bold;
+}
+
+#last-article a:hover
+{
+	padding: 5px;
+	background-color: #173035;
+	color: white;
 }
 
 @media all and (max-width: 1366px)/*=========================*/
@@ -386,9 +392,11 @@ footer
 	text-shadow: 1px 1px 2px white; 
 }
 
-#list-posts a
+#list-posts a:hover
 {
-	font-family: 'caviar_dreamsregular';
+	padding: 5px;
+	background-color: #173035;
+	color: white;
 }
 
 .news
@@ -403,6 +411,11 @@ footer
 	background-color: white;
 	color: black;
 	border-radius: 10px;
+}
+
+.news h2
+{
+	font-family: 'open_sansregular';
 }
 
 .news h2, p

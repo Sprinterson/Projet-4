@@ -1,10 +1,14 @@
 <?php 
 session_start();
 $title = 'Gestion des articles';
-if (empty($_SESSION['pseudo']) && empty($_SESSION['password'])){
-                echo 'Session connectée';
-                header('Location:index.php?action=adminAccess');
+
+if (!empty($_SESSION['pseudo']) && !empty($_SESSION['password'])){
+    echo 'Session connectée';        
 }
+else{
+    header('Location:index.php?action=adminAccess');
+}
+
 ob_start(); ?>
 
 <section class="new-post">
@@ -18,7 +22,7 @@ ob_start(); ?>
         </div>
         <div>
             <label for="content">Article</label><br />
-            <textarea id="content" name="content" required ></textarea>
+            <textarea id="content" name="content" ></textarea>
         </div>
         <div>
             <input class="submit-button" type="submit" value="Soumettre" />
@@ -32,14 +36,14 @@ ob_start(); ?>
     <br/>
 
     <?php
-        foreach ($posts as $data){
-        $id = (int) $data->id();
+        foreach ($posts as $posts){
+        $id = (int) $posts->id();
     ?>
             <div class="news">
                 <div class="content-post">
                     <h2>
-                        <a href="index.php?action=post&amp;id=<?= $id ?>"><?= htmlspecialchars($data->title()) ?></a>
-                        <em>le <?= $data->creation_date_fr() ?></em>
+                        <a href="index.php?action=post&amp;id=<?= $id ?>"><?= $posts->title() ?></a>
+                        <em>le <?= $posts->creation_date_fr() ?></em>
                     </h2>
                     <div class="content-modify">
                         <form id="modify" method="post" action="index.php?action=modifyPostView&amp;id=<?= $id ?>">

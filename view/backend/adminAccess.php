@@ -4,11 +4,14 @@ $title = 'Accès à l\'administration';
 session_start();
 
 if (session_status() == PHP_SESSION_ACTIVE){
-            echo 'Session is active';
-            if (!empty($_SESSION['pseudo']) && !empty($_SESSION['password'])){
-                header('Location:index.php?action=adminView');
-            }
-};    
+    if (!empty($_SESSION['pseudo']) && !empty($_SESSION['password'])){
+        $pseudo = $_SESSION['pseudo'];
+        header('Location:index.php?action=adminView');
+    }
+    else{
+        echo "Pas d'identifiants stockés";
+    }
+};
 
  ob_start(); ?>
 

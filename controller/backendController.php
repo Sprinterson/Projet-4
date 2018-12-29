@@ -1,11 +1,10 @@
 <?php
 
-namespace OpenClassrooms\Projet4\Controller; // La classe sera dans ce namespace
+namespace Projet4\Controller; // La classe sera dans ce namespace
 
-// Chargement des classes
-require_once('model/PostsManager.php');
-require_once('model/CommentsManager.php');
-require_once('model/UsersManager.php');
+use Projet4\Model\PostsManager as PostsManager;
+use Projet4\Model\CommentsManager as CommentsManager;
+use Projet4\Model\UsersManager as UsersManager;
 
 class BackEndController
 {
@@ -13,34 +12,33 @@ class BackEndController
     // ADMIN ACCESS ====================================================================================
 
     // Chargement de la page d'accès à l'administration
-    function adminAccess(){
+    public function adminAccess(){
         require('view/backend/adminAccess.php');
     }
 
     // Chargement de la page vérifiant les identifiants de connexion
-    function adminLogin(){
-        $usersManager = new \OpenClassrooms\Projet4\Model\UsersManager();
+    public function adminLogin(){
+        $usersManager = new UsersManager;
         $login = $usersManager->getLogin();
         $pseudo = $login->pseudo();
-        $password = $login->password();
+        $hash = $login->password();
         require('view/backend/adminLogin.php');
     }
 
-    // Chargement de la page vérifiant les identifiants de connexion
-    function getLogin(){
-        $usersManager = new \OpenClassrooms\Projet4\Model\UsersManager();
+    // Chargement des identifiants
+    public function getLogin(){
+        $usersManager = new UsersManager;
         $login = $usersManager->getLogin();
         $pseudo = $login->pseudo();
-        $password = $login->password();
-
-        return $password;
+        $hash = $login->password();
+        return $hash;
     }    
 
     // ADMIN VIEW ======================================================================================
 
     // Chargement du tableau de bord d'administration
-    function adminView(){
-        $usersManager = new \OpenClassrooms\Projet4\Model\UsersManager();
+    public function adminView(){
+        $usersManager = new UsersManager;
         $login = $usersManager->getLogin();
         $email = $login->email();
         $password = $login->password();
@@ -48,37 +46,37 @@ class BackEndController
     }
 
     // Fonction de déconnection manuelle de l'administrateur
-    function adminLogout(){
+    public function adminLogout(){
         require('view/backend/adminLogout.php');
     }
 
     // Fonction de modification de l'email de l'administrateur
-    function modifyEmail($email){
+    public function modifyEmail($email){
         header('Location:index.php?action=adminView');
-        $usersManager = new \OpenClassrooms\Projet4\Model\UsersManager();
+        $usersManager = new UsersManager;
         $usersManager->modifyEmail($email);
     }
 
     // Fonction de modification du mot de passe de l'administrateur
-    function modifyPassword($newPassword){
+    public function modifyPassword($newPassword){
         header('Location:index.php?action=adminView');
-        $usersManager = new \OpenClassrooms\Projet4\Model\UsersManager();
+        $usersManager = new UsersManager;
         $usersManager->modifyPassword($newPassword);
     }
 
     // POSTS BOARD VIEW =================================================================================
 
     // Chargement de la page de gestion des articles
-    function postsBoardView(){
-        $postsManager = new \OpenClassrooms\Projet4\Model\PostsManager(); 
+    public function postsBoardView(){
+        $postsManager = new PostsManager; 
         $posts = $postsManager->getPosts();
         require('view/backend/postsBoardView.php');
     }
 
     // Chargement de la fonction d'ajout de l'article
-    function addPost($title, $content){
+    public function addPost($title, $content){
         header('Location:index.php?action=postsBoardView');
-        $postsManager = new \OpenClassrooms\Projet4\Model\PostsManager();
+        $postsManager = new PostsManager;
         $affectedLines = $postsManager->addPost($title, $content);
         
 
@@ -88,22 +86,22 @@ class BackEndController
     }
 
       // Chargement de la page de modification de l'article
-    function modifyPostView(){
-        $postsManager = new \OpenClassrooms\Projet4\Model\PostsManager();
+    public function modifyPostView(){
+        $postsManager = new PostsManager;
         $posts = $postsManager->getPost($_GET['id']);
         require('view/backend/modifyPostView.php');
     }
 
     // Chargement de la fonction de modification de l'article
-    function modifyPost($title, $content){
+    public function modifyPost($title, $content){
         header('Location:index.php?action=postsBoardView');
-        $postsManager = new \OpenClassrooms\Projet4\Model\PostsManager(); 
+        $postsManager = new PostsManager; 
         $postsManager->modifyPost($title, $content);
     }
 
     // Chargement de la fonction de suppression de billet
-    function deletePost(){
-        $postsManager = new \OpenClassrooms\Projet4\Model\PostsManager(); 
+    public function deletePost(){
+        $postsManager = new PostsManager; 
         $postsManager->deletePost(); 
         header('Location:index.php?action=postsBoardView');
     }
@@ -111,29 +109,29 @@ class BackEndController
     // COMMENTS BOARD VIEW ===================================================================================
 
     // Chargement de la page de gestion des commentaires
-    function commentsBoardView(){
-    	$commentsManager = new \OpenClassrooms\Projet4\Model\CommentsManager(); 
+    public function commentsBoardView(){
+    	$commentsManager = new CommentsManager; 
         $comments = $commentsManager->getAllComments(); 
         require('view/backend/commentsBoardView.php');
     }
 
     // Chargement de la page de modification du commentaire
-    function modifyCommentView(){
-        $commentsManager = new \OpenClassrooms\Projet4\Model\CommentsManager();
+    public function modifyCommentView(){
+        $commentsManager = new CommentsManager;
         $comments = $commentsManager->getComment($_GET['id']);
         require('view/backend/modifyCommentView.php');
     }
 
     // Chargement de la fonction de modification de commentaire
-    function modifyComment($comment){
+    public function modifyComment($comment){
         header('Location:index.php?action=commentsBoardView');
-        $commentsManager = new \OpenClassrooms\Projet4\Model\CommentsManager(); 
+        $commentsManager = new CommentsManager; 
         $commentsManager->modifyComment($comment);
     }
 
     // Chargement de la fonction de suppression de commentaire
-    function deleteComment(){
-        $commentsManager = new \OpenClassrooms\Projet4\Model\CommentsManager(); 
+    public function deleteComment(){
+        $commentsManager = new CommentsManager; 
         $commentsManager->deleteComment(); 
         header('Location:index.php?action=commentsBoardView');
     }

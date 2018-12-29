@@ -1,5 +1,4 @@
 <?php $title = 'Le blog de Jean Forteroche'; 
-
 ?>
 
 <?php ob_start(); ?>
@@ -13,13 +12,13 @@
 
     <div class="news">
         <h2>
-            <?= htmlspecialchars($data->title()) ?>
+            <?= $data->title() ?>
             <br/>
             <em>le <?= $data->creation_date_fr() ?></em>
         </h2>
         <br/>
         <p>
-            <?= nl2br(htmlspecialchars($data->content())) ?>
+            <?= $data->content() ?>
         </p>
         <br/>
     </div>
@@ -34,24 +33,24 @@
         {
             
     ?>
-            <div class="comments-list">
-                <p><strong><?= htmlspecialchars($comments->author()) ?></strong> le <?= $comments->comment_date_fr() ?></p>
-                <p><?= nl2br(htmlspecialchars($comments->comment())) ?></p>
-                <br/>
-                <form action="index.php?action=signalComment&amp;id=<?= $data->id() ?>" method="post" >
-                    <input type="hidden" name="signal_id" value="<?= $comments->id() ?>"/>
-                    <input class="signal-button" type="submit" value="Signaler le commentaire" />
-                </form>
-            </div>
+    <div class="comments-list">
+        <p><strong><?= htmlspecialchars($comments->author()) ?></strong> le <?= $comments->comment_date_fr() ?></p>
+        <p><?= nl2br(htmlspecialchars($comments->comment())) ?></p>
+        <br/>
+        <form action="index.php?action=signalComment&amp;id=<?= $data->id() ?>" method="post" >
+            <input type="hidden" name="signal_id" value="<?= $comments->id() ?>"/>
+             <input class="signal-button" type="submit" value="Signaler le commentaire" />
+        </form>
+    </div>
     <?php
         }
-        foreach ($posts as $data)
+        foreach ($posts as $posts)
         {
     ?>
 
     <h2 class="comments">Ajouter un commentaire</h2>
 
-    <form class="add-comment" action="index.php?action=addComment&amp;id=<?= $data->id() ?>" method="post">
+    <form class="add-comment" action="index.php?action=addComment&amp;id=<?= $posts->id() ?>" method="post">
         <div>
             <label for="author">Auteur</label><br/>
             <input type="text" id="author" name="author" required />

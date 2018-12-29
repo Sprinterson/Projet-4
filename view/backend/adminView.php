@@ -2,10 +2,13 @@
 session_start();
 // On démarre la session (ceci est indispensable dans toutes les pages de notre section membre)
 $title = 'Administration';
-if (empty($_SESSION['pseudo']) && empty($_SESSION['password'])){
-                echo 'Session connectée';
-                header('Location:index.php?action=adminAccess');
+if (!empty($_SESSION['pseudo']) && !empty($_SESSION['password'])){
+    echo 'Session connectée';    
 }
+else{
+    header('Location:index.php?action=adminAccess');
+}
+
 ob_start(); ?>
 
 <section id="admin-view">

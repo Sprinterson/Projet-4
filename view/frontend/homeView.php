@@ -13,21 +13,21 @@
     <h2 id="last-article-title">Dernier article publié</h2>
     <br/>
     <?php
-        foreach ($posts as $data)
+        foreach ($posts as $posts)
         {
         ?>
             <div class="news">
                 <h2>
-                    <a href="index.php?action=post&amp;id=<?= $data->id() ?>"><?= htmlspecialchars($data->title()) ?></a>
+                    <a href="index.php?action=post&amp;id=<?= $posts->id() ?>"><?= $posts->title() ?></a>
                     <br/>
-                    <em>le <?= $data->creation_date_fr() ?></em>
+                    <em>le <?= $posts->creation_date_fr() ?></em>
                 </h2>
                 <br/>
                 <p>
-                    <?= htmlspecialchars($data->content())?>
+                    <?= $posts->content()?>
                     <br/>
                     <br/>
-                    <a href="index.php?action=post&amp;id=<?= $data->id() ?>" class="comments-link">Commentaires</a>
+                    <a href="index.php?action=post&amp;id=<?= $posts->id() ?>" class="comments-link">Commentaires</a>
                     <br/>
                 </p>
             </div>

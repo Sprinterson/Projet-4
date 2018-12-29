@@ -1,13 +1,17 @@
 <?php 
 session_start();
 $title = 'Modifier un commentaire'; 
-if (empty($_SESSION['pseudo']) && empty($_SESSION['password'])){
-                echo 'Session connectée';
-                header('Location:index.php?action=adminAccess');
-};
+if (!empty($_SESSION['pseudo']) && !empty($_SESSION['password'])){
+    echo 'Session connectée';        
+}
+else{
+    header('Location:index.php?action=adminAccess');
+}
+
 if(isset($_GET['id'])) {
     $id = $_GET['id'];
 };
+
 ob_start(); ?>
 
 <section class="new-post">
@@ -22,7 +26,7 @@ ob_start(); ?>
         ?>
         <div>
             <label for="comment">Commentaire</label><br />
-            <textarea class="comment" name="comment" required><?= nl2br(htmlspecialchars($comments->comment())) ?></textarea>
+            <textarea class="comment" name="comment" required><?= $comments->comment() ?></textarea>
         </div>
         <div>
             <input type="hidden" name="modified_id" value="<?php print $id ?>"/>

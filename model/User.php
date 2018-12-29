@@ -1,6 +1,6 @@
 <?php
 
-namespace OpenClassrooms\Projet4\Model; // La classe sera dans ce namespace
+namespace Projet4\Model; // La classe sera dans ce namespace
 
 class User
 {

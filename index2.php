@@ -1,82 +1,81 @@
 <?php
 
-use Projet4\Controller\FrontEndController as FrontEndController;
-use Projet4\Controller\BackEndController as BackEndController;
+require_once('controller/frontendController.php');
+require_once('controller/backendController.php');
 
-require_once('autoload.php');
-$autoload = new AutoLoad;
-$autoload->autoLoad();
+use \OpenClassrooms\Projet4\Controller\FrontEndController as FrontEndController;
+use \OpenClassrooms\Projet4\Controller\BackEndController as BackEndController;
 
 try {
     // L'isset est le nom du paramètre de l'URL (comme 'action')
-    if (isset($_GET['action'])){
+    switch (isset($_GET['action'])){
 
         // ADMIN ACCESS ====================================================================================
 
         // Redirige sur la page d'accès à l'administration
-        if ($_GET['action'] == 'adminAccess'){
+        case 'adminAccess' :
             $backendManager = new BackEndController;
             $backendManager->adminAccess();
-        }
+            break;
 
         // ADMIN LOGIN =====================================================================================
 
         // Redirige sur la page vérifiant les identifiants de connexion
-        elseif ($_GET['action'] == 'adminLogin'){
+        case 'adminLogin' :
             $backendManager = new BackEndController;
             $backendManager->adminLogin();
-        }
+            break;
 
         // ADMIN VIEW ==================================================================================
 
         // Redirige sur la page d'administration
-        elseif ($_GET['action'] == 'adminView'){
+        case 'adminView' :
             $backendManager = new BackEndController;
             $backendManager->adminView();
-        }
+            break;
 
         // Modifie l'email de l'administrateur
-        elseif ($_GET['action'] == 'modifyEmail'){
+        case 'modifyEmail' :
             $backendManager = new BackEndController;
             $backendManager->modifyEmail($_POST['modify-email']);
-        }
+            break;
 
         // Modifie le mot de passe de l'administrateur
-        elseif ($_GET['action'] == 'newPassword'){ 
+        case 'newPassword' :
 
             $backendManager = new BackEndController;
-            $hash = $backendManager->getLogin();
+            $password = $backendManager->getLogin();
 
-            $oldPassword = password_verify($_POST['old-password'], $hash);
+            $oldPassword = $_POST['old-password'];
             $newPassword = $_POST['new-password'];
 
-            if ($oldPassword === true){
+            if ($password == $oldPassword){
                 
                 $backendManager->modifyPassword($newPassword);
             }
             else{
                 throw new Exception("Mauvais mot de passe");
             }
-        }
+            break;
 
         // ADMIN LOGOUT ====================================================================================
 
         // Redirige sur la page de déconnection
-        elseif ($_GET['action'] == 'adminLogout'){
+        case 'adminLogout' :
             $backendManager = new BackEndController;
             $backendManager->adminLogout();
-        }
+            break;
 
         // POSTS BOARD VIEW ================================================================================
 
         // Redirige sur la page de gestion des articles
-        elseif ($_GET['action'] == 'postsBoardView'){ 
+        case 'postsBoardView' :
             $backendManager = new BackEndController;
             $backendManager->postsBoardView();   
-        }
+            break;
 
         // Création d'un nouvel article
-        elseif ($_GET['action'] == 'newPost'){
+        case 'newPost' :
             if (!empty($_POST['title']) && !empty($_POST['content'])){
                 $backendManager = new BackEndController;
                 $backendManager->addPost($_POST['title'], $_POST['content']);
@@ -84,10 +83,10 @@ try {
             else{
                 throw new Exception('Tous les champs ne sont pas remplis !');
             }
-        }
+            break;
 
         // Redirige sur la page de modification d'un article
-        elseif ($_GET['action'] == 'modifyPostView'){
+        case 'modifyPostView' :
             if (isset($_GET['id']) && $_GET['id'] > 0){
                 $backendManager = new BackEndController;
                 $backendManager->modifyPostView();
@@ -97,10 +96,10 @@ try {
                 $backendManager = new BackEndController;
                 $backendManager->errorView();
             }
-        }
+            break;
 
         // Modification d'un article existant
-        elseif ($_GET['action'] == 'modifyPost'){
+        case 'modifyPost' :
             if (!empty($_POST['title']) && !empty($_POST['content'])){
                 $backendManager = new BackEndController;
                 $backendManager->modifyPost($_POST['title'], $_POST['content']);
@@ -108,24 +107,24 @@ try {
             else{
                 throw new Exception('Tous les champs ne sont pas remplis !');
             }
-        }    
+            break;    
             
         // Suppression d'un article
-        elseif ($_GET['action'] == 'deletePost'){
+        case 'deletePost' :
             $backendManager = new BackEndController;
             $backendManager->deletePost();
-        }
+            break;
 
         // COMMENTS VIEW ===================================================================================
 
         // Redirige sur la page de gestion des commentaires
-        elseif ($_GET['action'] == 'commentsBoardView'){
+        case 'commentsBoardView' :
             $backendManager = new BackEndController;
             $backendManager->commentsBoardView();
-        }
+            break;
 
         // Redirige sur la page de modification d'un commentaire
-        elseif ($_GET['action'] == 'modifyCommentView'){
+        case 'modifyCommentView' :
             if (isset($_GET['id']) && $_GET['id'] > 0){
                 $backendManager = new BackEndController;
                 $backendManager->modifyCommentView();
@@ -135,10 +134,10 @@ try {
                 $backendManager = new BackEndController;
                 $backendManager->errorView();
             }
-        }
+            break;
 
         // Modification d'un commentaire existant
-        elseif ($_GET['action'] == 'modifyComment'){
+        case 'modifyComment' :
             if (!empty($_POST['comment'])){
                 $comment = $_POST['comment'];
                 $backendManager = new BackEndController;
@@ -147,26 +146,26 @@ try {
             else{
                 throw new Exception('Tous les champs ne sont pas remplis !');
             }
-        }
+            break;
 
         // Suppression de commentaire
-        elseif ($_GET['action'] == 'deleteComment'){
+        case 'deleteComment' :
             $backendManager = new BackEndController;
             $backendManager->deleteComment();
-        }
+            break;
 
         // LIST POSTS VIEW =================================================================================
 
         // Redirige sur la page de la liste d'articles
-        elseif ($_GET['action'] == 'listPosts'){
+        case 'listPosts' :
             $frontendManager = new FrontEndController;
             $frontendManager->listPosts();
-        }
+            break;
 
         // POST VIEW =======================================================================================
 
         // Redirige sur la page de l'article avec ses commentaires
-        elseif ($_GET['action'] == 'post'){
+        case 'post' :
             if (isset($_GET['id']) && $_GET['id'] > 0){
                 $frontendManager = new FrontEndController;
                 $frontendManager->post();
@@ -176,10 +175,10 @@ try {
                 $backendManager = new FrontEndController;
                 $backendManager->errorView();
             }
-        }
+            break;
 
         // Fonction d'ajout de commentaire
-        elseif ($_GET['action'] == 'addComment'){
+        case 'addComment' :
             if (isset($_GET['id']) && $_GET['id'] > 0){
                 if (!empty($_POST['author']) && !empty($_POST['comment'])) {
                     $id = $_GET['id'];
@@ -193,20 +192,22 @@ try {
             else{
                 throw new Exception('Aucun identifiant de commentaire envoyé');
             }
-        }
+            break;
 
-        elseif ($_GET['action'] == 'signalComment'){
+        case 'signalComment' :
             $frontendManager = new FrontEndController;
             $frontendManager->signalComment();
-        }
-    }
+            break;
+    
 
-    // HOME VIEW ===========================================================================================
+        // HOME VIEW ===========================================================================================
 
-    // Nom de la page d'accueil sur laquelle on est directement redirigé sur l'URL ne contient aucun paramètre.
-    else{
-        $frontendManager = new FrontEndController;
-        $frontendManager->homeView();
+        // Nom de la page d'accueil sur laquelle on est directement redirigé sur l'URL ne contient aucun paramètre.
+        default :
+            $frontendManager = new FrontEndController;
+            $frontendManager->homeView();
+            break;
+    
     }
 }
 

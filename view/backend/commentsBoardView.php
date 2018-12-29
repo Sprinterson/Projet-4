@@ -1,10 +1,13 @@
 <?php 
 session_start();
 $title = 'Gérer les commentaires';
-if (empty($_SESSION['pseudo']) && empty($_SESSION['password'])){
-                echo 'Session connectée';
-                header('Location:index.php?action=adminAccess');
+if (!empty($_SESSION['pseudo']) && !empty($_SESSION['password'])){
+    echo 'Session connectée';        
 }
+else{
+    header('Location:index.php?action=adminAccess');
+}
+
 ob_start(); ?>
 
 <section id="comments-view">
@@ -13,11 +16,11 @@ ob_start(); ?>
     <br/>
 
     <?php
-        foreach ($comments as $data){
-            $id = (int) $data->id();
-            $author = substr($data->author(),0, 20);
-            $comment = substr($data->comment(),0, 50);
-            $signals = (int) $data->signals();
+        foreach ($comments as $comments){
+            $id = (int) $comments->id();
+            $author = substr(htmlspecialchars($comments->author()),0, 20);
+            $comment = substr(htmlspecialchars($comments->comment()),0, 50);
+            $signals = (int) $comments->signals();
         ?>
             <div class="news">
                 <div class="comment-author"><p><?= $author ?></p></div>

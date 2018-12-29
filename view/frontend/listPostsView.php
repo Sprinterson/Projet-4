@@ -11,22 +11,22 @@
     <br/>
 
     <?php
-        foreach ($posts as $data)
+        foreach ($posts as $posts)
         {
-        $post_content = $data->content();
+        $post_content = $posts->content();
         $post_resume = substr($post_content, 0, 500);
         ?>
             <div class="news">
 
                 <h2>
-                    <a href="index.php?action=post&amp;id=<?= $data->id() ?>"><?= htmlspecialchars($data->title()) ?></a>
-                    <em>le <?= $data->creation_date_fr() ?></em>
+                    <a href="index.php?action=post&amp;id=<?= $posts->id() ?>"><?= $posts->title() ?></a>
+                    <em>le <?= $posts->creation_date_fr() ?></em>
                 </h2>
                 
                 <p>
-                    <?= nl2br(htmlspecialchars($post_resume))?>...
+                    <?= $post_resume ?>...
                     <br/>
-                    <a href="index.php?action=post&amp;id=<?= $data->id() ?>" class="comments-link">Lire la suite [...]</a>
+                    <a href="index.php?action=post&amp;id=<?= $posts->id() ?>" class="comments-link">Lire la suite [...]</a>
                 </p>
             </div>
         <?php
