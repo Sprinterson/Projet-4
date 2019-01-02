@@ -1193,6 +1193,12 @@ footer
 	font-size: 1.25em;
 }
 
+#error p
+{
+	top: 150px;
+	font-family: 'caviar_dreamsregular', sans-serif;
+}
+
 @media all and (max-width: 1366px)/*=========================*/
 {
 

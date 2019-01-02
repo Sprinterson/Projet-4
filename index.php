@@ -48,6 +48,7 @@ try {
             $hash = $backendManager->getLogin();
 
             $oldPassword = password_verify($_POST['old-password'], $hash);
+            var_dump($oldPassword);
             $newPassword = $_POST['new-password'];
 
             if ($oldPassword === true){

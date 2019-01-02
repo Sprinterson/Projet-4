@@ -1,13 +1,11 @@
-<?php $title = 'Le blog de Jean Forteroche'; 
-?>
-
-<?php ob_start(); ?>
+<?php
+session_start();
+    echo $_SESSION["error"];
+    foreach ($posts as $data){
+        $title = $data->title();
+ob_start(); ?>
 
 <section id="posts">
-    <?php
-        foreach ($posts as $data)
-        {
-    ?>
     <h1><a href="?action=listPosts">Retour à la liste des billets</a></h1>
 
     <div class="news">
@@ -18,20 +16,16 @@
         </h2>
         <br/>
         <p>
-            <?= $data->content() ?>
+            <?= $data->content();
+    }?>
         </p>
         <br/>
     </div>
-    <?php
-    }
-    ?>
 
     <h2 class="comments">Commentaires</h2>
 
     <?php
-        foreach ($comments as $comments)
-        {
-            
+        foreach ($comments as $comments){    
     ?>
     <div class="comments-list">
         <p><strong><?= htmlspecialchars($comments->author()) ?></strong> le <?= $comments->comment_date_fr() ?></p>
@@ -44,8 +38,7 @@
     </div>
     <?php
         }
-        foreach ($posts as $posts)
-        {
+        foreach ($posts as $posts){
     ?>
 
     <h2 class="comments">Ajouter un commentaire</h2>
@@ -53,11 +46,17 @@
     <form class="add-comment" action="index.php?action=addComment&amp;id=<?= $posts->id() ?>" method="post">
         <div>
             <label for="author">Auteur</label><br/>
-            <input type="text" id="author" name="author" required />
+            <input type="text" id="author" name="author" />
         </div>
         <div>
             <label for="comment">Commentaire</label><br/>
-            <textarea id="comment" name="comment" required ></textarea>
+            <textarea id="comment" name="comment"></textarea>
+             <?php
+                    if(!empty($_SESSION["error"])){
+                        $error = $_SESSION["error"];
+                        echo "<span>$error</span>";
+                    }
+            ?>  
         </div>
         <div>
             <input class="submit-button" type="submit" value="Soumettre" />
@@ -70,6 +69,6 @@
     
 </section>
 
-<?php $content = ob_get_clean(); ?>
-
-<?php require('template.php'); ?>
+<?php $content = ob_get_clean(); 
+      require('template.php');
+      unset($_SESSION["error"]); ?>

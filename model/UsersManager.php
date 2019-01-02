@@ -9,7 +9,7 @@ class UsersManager
 {
     public function getLogin(){ // Fonction pour récupérer les identifiants
         // On se connecte à la base de données
-        $db = \Projet4\Model\Database::dbConnect(); 
+        $db = Database::dbConnect(); 
         // On établit une requête dans la base de données pour récupérer les identifiants
         $req = $db->query('SELECT id, pseudo, password, email FROM users');
         // La requête retournée est transformée en tableau 

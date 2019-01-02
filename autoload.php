@@ -3,7 +3,6 @@
 class AutoLoad
 {
 	public function autoLoad(){
-
 		require_once('controller/frontendController.php');
 		require_once('controller/backendController.php');
 		require_once('model/PostsManager.php');
