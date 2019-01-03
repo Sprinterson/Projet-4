@@ -224,6 +224,7 @@ nav li:hover
 	align-items: center;
 
 	background: url("../images/homepage-banner.png");
+	background-size: 100%;
 }
 
 #homepage h1
@@ -275,6 +276,7 @@ nav li:hover
 	#homepage
 	{
 		height: 390px;
+		background-size: auto;
 	}
 
 	#last-article
@@ -288,6 +290,7 @@ nav li:hover
 	#homepage
 	{
 		height: 278px;
+		background-size: auto;
 	}
 
 	#homepage h1
@@ -302,6 +305,7 @@ nav li:hover
 	#homepage
 	{
 		height: 185px;
+		background-size: auto;
 	}
 
 	#homepage h1
@@ -729,7 +733,7 @@ footer
 #admin-view .submit-button
 {
 	margin-top: 10px;
-	width: 65px;
+	width: 75px;
 }
 
 #admin-view form

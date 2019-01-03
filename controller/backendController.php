@@ -40,6 +40,7 @@ class BackEndController
     public function adminView(){
         $usersManager = new UsersManager;
         $login = $usersManager->getLogin();
+        $pseudo = $login->pseudo();
         $email = $login->email();
         $password = $login->password();
         require('view/backend/adminView.php');
@@ -48,6 +49,13 @@ class BackEndController
     // Fonction de déconnection manuelle de l'administrateur
     public function adminLogout(){
         require('view/backend/adminLogout.php');
+    }
+
+    // Fonction de modification du pseudo de l'administrateur
+    public function modifyUser($user){
+        header('Location:index.php?action=adminView');
+        $usersManager = new UsersManager;
+        $usersManager->modifyUser($user);
     }
 
     // Fonction de modification de l'email de l'administrateur

@@ -2,14 +2,15 @@
 session_start();
 // On démarre la session (ceci est indispensable dans toutes les pages de notre section membre)
 $title = 'Administration';
+
 if (!empty($_SESSION['pseudo']) && !empty($_SESSION['password'])){
-    echo 'Session connectée';    
 }
 else{
     header('Location:index.php?action=adminAccess');
 }
 
 ob_start(); ?>
+
 
 <section id="admin-view">
 
@@ -19,23 +20,22 @@ ob_start(); ?>
 		<h2><a href="?action=commentsBoardView">Gestion des commentaires</a></h2>
 		<h2><a href="?action=adminLogout">Se déconnecter</a></h2>
 		<h1>Informations</h1>
-		<p>Utilisateur : <?php echo $_SESSION['pseudo']?></p>
-		<p>Mot de passe : <?php echo $_SESSION['password']?></p>
+		<p>Utilisateur : <?php echo $pseudo?></p>
 		<p>Email : <?php echo $email?></p>
 	</div>
 
 	<div>
 		<h1>Paramètres de profil</h1>
 
-		<form method="post" action="index.php?action=oldPassword>
-			<label for="old-password">Mot de passe actuel</label><br/>
-	        <input type="password" name="old-password" /><br/>
-	        <br/>
+		<form method="post" action="index.php?action=currentPassword">
+			<label for="currentPassword">Mot de passe actuel</label><br/>
+	        <input type="password" name="currentPassword" /><br/>
+	        <input class="submit-button" type="submit" value="Soumettre"/>
 	    </form>
 
-		<form id="pseudo" method="post" action="index.php?action=modifyName">
-			<label for="pseudo">Pseudo</label><br/>
-	        <input type="text" name="pseudo" required/><br/>
+		<form id="user" method="post" action="index.php?action=modifyUser">
+			<label for="user">Pseudo</label><br/>
+	        <input type="text" name="user" required/><br/>
 	        <input class="submit-button" type="submit" value="Modifier"/>
 	    </form>
 
@@ -55,6 +55,6 @@ ob_start(); ?>
 </section>
 
 <?php
-
 $content = ob_get_clean(); 
- require('template.php'); ?>
+require('template.php');
+?>

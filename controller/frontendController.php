@@ -48,13 +48,9 @@ class FrontEndController
         $commentsManager = new CommentsManager;
         $affectedLines = $commentsManager->postComment($postId, $author, $comment);
 
-
         if ($affectedLines === false) {
             throw new Exception('Impossible d\'ajouter le commentaire !');
             header('Location: index.php?action=errorView');
-        }
-        else {
-            header('Location:index.php?action=post&id=<?= $postId ?>');
         }
     }
 

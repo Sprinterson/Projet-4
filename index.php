@@ -35,24 +35,55 @@ try {
             $backendManager->adminView();
         }
 
+        // Vérifie le mot de passe pour la page d'administration
+        elseif ($_GET['action'] == 'currentPassword'){
+            $backendManager = new BackEndController;
+            $hash = $backendManager->getLogin();
+            $currentPassword = password_verify( $_POST['currentPassword'], $hash);
+
+            if ($currentPassword == true){
+                session_start();
+                $_SESSION['currentPassword'] = $_POST['currentPassword'];
+                header('Location:index.php?action=adminView');
+            }
+            else{
+                throw new Exception("Mauvais mot de passe");
+            }
+        }
+
+        // Modifie le pseudo de l'administrateur
+        elseif ($_GET['action'] == 'modifyUser'){
+            session_start();
+
+            if(!empty($_SESSION['currentPassword'])){
+                $backendManager = new BackEndController;
+                $backendManager->modifyUser($_POST['user']);
+            }
+            else{
+                throw new Exception("Mauvais mot de passe");
+            }
+        }
+
         // Modifie l'email de l'administrateur
         elseif ($_GET['action'] == 'modifyEmail'){
-            $backendManager = new BackEndController;
-            $backendManager->modifyEmail($_POST['modify-email']);
+            session_start();
+
+            if(!empty($_SESSION['currentPassword'])){
+                $backendManager = new BackEndController;
+                $backendManager->modifyEmail($_POST['modify-email']);
+            }
+            else{
+                throw new Exception("Mauvais mot de passe");
+            }
         }
 
         // Modifie le mot de passe de l'administrateur
         elseif ($_GET['action'] == 'newPassword'){ 
+            session_start();
 
-            $backendManager = new BackEndController;
-            $hash = $backendManager->getLogin();
-
-            $oldPassword = password_verify($_POST['old-password'], $hash);
-            var_dump($oldPassword);
-            $newPassword = $_POST['new-password'];
-
-            if ($oldPassword === true){
-                
+            if(!empty($_SESSION['currentPassword'])){
+                $backendManager = new BackEndController;
+                $newPassword = $_POST['new-password'];
                 $backendManager->modifyPassword($newPassword);
             }
             else{
@@ -188,17 +219,22 @@ try {
                     $frontendManager->addComment($_GET['id'], $_POST['author'], $_POST['comment']);
                 }
                 else{
-                    throw new Exception('Tous les champs ne sont pas remplis !');
+                    session_start();
+                    $error = "Veuillez remplir les champs auteur et/ou commentaire";
+                    $_SESSION["error"] = $error;
+                    $postId = $_GET['id'];
+                    header('Location:index.php?action=post&id='.$postId);
                 }
-            }
-            else{
-                throw new Exception('Aucun identifiant de commentaire envoyé');
             }
         }
 
         elseif ($_GET['action'] == 'signalComment'){
             $frontendManager = new FrontEndController;
             $frontendManager->signalComment();
+        }
+
+        elseif ($_GET['action'] == false){
+            throw new Exception('Cette page n\'existe pas');
         }
     }
 

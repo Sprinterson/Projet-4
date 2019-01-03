@@ -21,6 +21,13 @@ class UsersManager
         return $login;
     }
 
+    public function modifyUser($user){
+        $user= $_POST['user'];
+        $db = Database::dbConnect();
+        $req = $db->prepare('UPDATE users SET pseudo=?');
+        $req->execute(array($user));
+    }
+
     public function modifyEmail($email){
         $eMail= $_POST['modify-email'];
         $db = Database::dbConnect();
