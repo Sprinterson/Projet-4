@@ -15,7 +15,7 @@ class PostsManager
         // La requête retournée est transformée en tableau 
         $req->execute(array());
         while ($data = $req->fetch($db::FETCH_ASSOC)){
-           $posts[]  = new Post($data); // On instancie le tableau en nouvel objet 
+           $posts[]  = new Post($data); // On instancie le tableau en nouvel objet à partir de la classe Post.
         };
         // l'objet est retourné en résultat
         return $posts;

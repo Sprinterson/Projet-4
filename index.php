@@ -78,7 +78,7 @@ try {
         }
 
         // Modifie le mot de passe de l'administrateur
-        elseif ($_GET['action'] == 'newPassword'){ 
+        elseif ($_GET['action'] == 'newPassword'){
             session_start();
 
             if(!empty($_SESSION['currentPassword'])){

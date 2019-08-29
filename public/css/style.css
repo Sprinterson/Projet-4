@@ -793,13 +793,6 @@ footer
 
 }
 
-.bta-newPost.backtoAdmin
-{
-	position: absolute;
-	left: -98px;
-	top: 20px;
-}
-
 .new-post h1
 {
 	position: relative;
@@ -887,10 +880,16 @@ footer
 
 #manage-post .news
 {
-	display: flex;
-	flex-direction: row;
 	width: auto;
 	padding: 0px 0px 0px 10px;
+	height: 50px;
+	margin-left: 25px;
+	margin-right: 25px;
+
+	display: flex;
+	flex-direction: row;
+
+	background-color: #5c53dd;
 }
 
 .content-post
@@ -898,16 +897,19 @@ footer
 	width: 100%;
 	display: flex;
 	align-items: stretch;
+	margin: 10px;
 }
 
 .content-post h2
 {
 	width: 1000px;
+	background-color: #5c53dd;
+	margin: auto;
 }
 
 .content-post h2 a
 {
-	font-family: 'caviar_dreamsregular';
+	font-family: 'bebas-neue-regular';
 }
 
 #manage-post .content-delete

@@ -1,0 +1,5 @@
+ErrorDocument 400 /view/frontend/404.php
+ErrorDocument 401 /view/frontend/404.php
+ErrorDocument 403 /view/frontend/404.php
+ErrorDocument 404 /view/frontend/404.php
+ErrorDocument 500 /view/frontend/404.php
